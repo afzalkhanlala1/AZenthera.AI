@@ -29,7 +29,7 @@ export function ServiceCard({
         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C63FF]/20 to-[#00D4AA]/20 flex items-center justify-center text-2xl mb-4">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
+        <h3 className="text-xl font-semibold text-foreground mb-3">{title}</h3>
         <p className="text-text-muted text-sm leading-relaxed flex-grow">
           {description}
         </p>

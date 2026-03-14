@@ -28,11 +28,11 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-surface border-t border-white/5">
+    <footer className="bg-surface border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
-            <Link href="/" className="font-bold text-xl text-white inline-block mb-4">
+            <Link href="/" className="font-bold text-xl text-foreground inline-block mb-4">
               AZenthera<span className="gradient-text"> AI</span>
             </Link>
             <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-xs">
@@ -45,7 +45,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-muted hover:text-white transition-colors"
+                  className="text-text-muted hover:text-foreground transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -55,13 +55,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <h4 className="text-foreground font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="text-text-muted hover:text-white transition-colors text-sm"
+                    className="text-text-muted hover:text-foreground transition-colors text-sm"
                   >
                     {service.shortTitle}
                   </Link>
@@ -71,25 +71,25 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Company</h4>
+            <h4 className="text-foreground font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-text-muted hover:text-white transition-colors text-sm">
+                <Link href="/about" className="text-text-muted hover:text-foreground transition-colors text-sm">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-text-muted hover:text-white transition-colors text-sm">
+                <Link href="/case-studies" className="text-text-muted hover:text-foreground transition-colors text-sm">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/industries" className="text-text-muted hover:text-white transition-colors text-sm">
+                <Link href="/industries" className="text-text-muted hover:text-foreground transition-colors text-sm">
                   Industries
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-text-muted hover:text-white transition-colors text-sm">
+                <Link href="/contact" className="text-text-muted hover:text-foreground transition-colors text-sm">
                   Contact
                 </Link>
               </li>
@@ -97,19 +97,19 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Contact</h4>
+            <h4 className="text-foreground font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-text-muted text-sm">
               <li>
-                <a href="mailto:afzaljawadkhan@gmail.com" className="hover:text-white transition-colors">
+                <a href="mailto:afzaljawadkhan@gmail.com" className="hover:text-foreground transition-colors">
                   afzaljawadkhan@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+923379755627" className="hover:text-white transition-colors">
+                <a href="tel:+923379755627" className="hover:text-foreground transition-colors">
                   +92 337 9755627
                 </a>
               </li>
-              <li className="hover:text-white transition-colors">
+              <li className="hover:text-foreground transition-colors">
                 Islamabad, Pakistan
               </li>
               <li className="text-text-muted/70 text-xs mt-2">
@@ -119,7 +119,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/5">
+        <div className="mt-16 pt-8 border-t border-border">
           <p className="text-text-muted text-sm text-center">
             &copy; {currentYear} AZenthera AI &middot; Islamabad, Pakistan &middot; Serving clients worldwide
           </p>

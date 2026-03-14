@@ -42,7 +42,7 @@ export function ProcessSection() {
                       index % 2 === 1 ? "md:text-right" : ""
                     }`}
                   >
-                    <h3 className="text-xl font-semibold text-white mb-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
                       {step.title}
                     </h3>
                     <p className="text-text-muted leading-relaxed">

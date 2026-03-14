@@ -49,13 +49,12 @@ export function ContactPageContent() {
 
   return (
     <>
-      {/* Hero */}
       <section className="relative py-24 px-4 overflow-hidden">
         <div className="absolute inset-0 hero-grid" />
         <div className="absolute inset-0 radial-fade" />
         <div className="relative z-10 max-w-7xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground text-center">
               Start Your <span className="gradient-text">Project Today</span>
             </h1>
             <p className="text-text-muted text-lg text-center max-w-2xl mx-auto mt-6">
@@ -66,7 +65,6 @@ export function ContactPageContent() {
         </div>
       </section>
 
-      {/* Two-column layout */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -79,7 +77,7 @@ export function ContactPageContent() {
             <AnimatedSection delay={0.1}>
               <div className="space-y-6">
                 <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">Reach Out Directly</h3>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Reach Out Directly</h3>
                   <p className="text-text-muted text-sm">
                     We work across all time zones and are flexible with communication.
                   </p>
@@ -89,7 +87,7 @@ export function ContactPageContent() {
                     <span className="text-2xl">{item.icon}</span>
                     <div>
                       <p className="text-text-muted text-sm font-medium uppercase tracking-wider">{item.label}</p>
-                      <p className="text-white text-lg font-medium mt-1">{item.value}</p>
+                      <p className="text-foreground text-lg font-medium mt-1">{item.value}</p>
                     </div>
                   </div>
                 ))}
@@ -111,11 +109,10 @@ export function ContactPageContent() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
             <p className="text-text-muted text-center max-w-xl mx-auto mb-16">
@@ -130,7 +127,7 @@ export function ContactPageContent() {
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 >
                   <div className="p-6 flex justify-between items-center">
-                    <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-semibold text-foreground pr-4">{faq.question}</h3>
                     <span
                       className={`text-2xl text-accent transition-transform ${openFaq === index ? "rotate-180" : ""}`}
                     >

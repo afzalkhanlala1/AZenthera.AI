@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
+@variant dark (&:is(.dark, .dark *));
+
 :root {
+  --background: #fafbfc;
+  --foreground: #1a1a2e;
+  --accent: #6C63FF;
+  --accent-secondary: #00B894;
+  --surface: #f0f1f5;
+  --surface-light: #e4e5ec;
+  --border: rgba(0, 0, 0, 0.08);
+  --text-muted: #64647a;
+}
+
+.dark {
   --background: #050505;
   --foreground: #ededed;
   --accent: #6C63FF;
@@ -41,6 +54,11 @@ body {
 }
 
 ::selection {
+  background: rgba(108, 99, 255, 0.2);
+  color: var(--foreground);
+}
+
+.dark ::selection {
   background: rgba(108, 99, 255, 0.3);
   color: #fff;
 }
@@ -70,12 +88,24 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .glass-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark .glass-card:hover {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(108, 99, 255, 0.3);
 }
@@ -101,11 +131,21 @@ body {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(108, 99, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
+.dark .hero-grid {
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+}
+
 .radial-fade {
+  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.05) 0%, transparent 70%);
+}
+
+.dark .radial-fade {
   background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.08) 0%, transparent 70%);
 }

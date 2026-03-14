@@ -18,7 +18,7 @@ export function AboutSection() {
                 <span className="gradient-text">Our Story</span>
               </>
             }
-            description="Two NUST-trained engineers building production-grade AI and data systems for global clients."
+            description="Engineers building production-grade AI and data systems for global clients."
           />
         </AnimatedSection>
 
@@ -26,12 +26,12 @@ export function AboutSection() {
           <div className="space-y-6">
             <AnimatedSection delay={0.1} direction="right">
               <p className="text-text-muted text-lg leading-relaxed">
-                AZenthera AI was founded by two NUST-trained Mechatronics engineers
-                who share a passion for building intelligent systems that solve real
-                business problems. With complementary expertise spanning AI
-                engineering, computer vision, data science, and business
-                intelligence, we deliver end-to-end solutions from proof-of-concept
-                to production deployment.
+                AZenthera AI was founded by engineers who share a passion for
+                building intelligent systems that solve real business problems.
+                With complementary expertise spanning AI engineering, computer
+                vision, data science, and business intelligence, we deliver
+                end-to-end solutions from proof-of-concept to production
+                deployment.
               </p>
             </AnimatedSection>
 
@@ -48,14 +48,14 @@ export function AboutSection() {
             <AnimatedSection delay={0.3} direction="right">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: "🎓", title: "NUST Engineers", desc: "Top-tier engineering education" },
+                  { icon: "🎓", title: "Expert Engineers", desc: "Top-tier engineering talent" },
                   { icon: "🌍", title: "Global Clients", desc: "USA, Japan, UAE, Europe" },
                   { icon: "⚡", title: "Production-Grade", desc: "Not demos — real systems" },
                   { icon: "🤝", title: "Transparent Pricing", desc: "No hidden costs or surprises" },
                 ].map((hl) => (
                   <div key={hl.title} className="glass-card rounded-xl p-4 text-center">
                     <div className="text-2xl mb-2">{hl.icon}</div>
-                    <div className="text-sm font-semibold text-white">{hl.title}</div>
+                    <div className="text-sm font-semibold text-foreground">{hl.title}</div>
                     <div className="text-xs text-text-muted mt-1">{hl.desc}</div>
                   </div>
                 ))}
@@ -85,7 +85,7 @@ export function AboutSection() {
                 production systems.
               </p>
               <div>
-                <p className="text-white font-semibold">Afzal Khan</p>
+                <p className="text-foreground font-semibold">Afzal Khan</p>
                 <p className="text-text-muted text-sm">AI Engineer, Co-founder</p>
               </div>
             </motion.div>

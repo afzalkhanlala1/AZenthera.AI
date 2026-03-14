@@ -44,7 +44,7 @@ export function TechStackSection() {
                   {category.technologies.map((tech, techIndex) => (
                     <motion.span
                       key={tech}
-                      className="glass-card rounded-full px-4 py-2 text-sm text-text-muted hover:text-white hover:border-accent/50 transition-colors"
+                      className="glass-card rounded-full px-4 py-2 text-sm text-text-muted hover:text-foreground hover:border-accent/50 transition-colors"
                       variants={{
                         hidden: { opacity: 0, y: 10 },
                         visible: { opacity: 1, y: 0 },

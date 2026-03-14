@@ -235,12 +235,12 @@ export const services: Service[] = [
     icon: "⚙️",
     features: [
       "3NF & Dimensional Modeling (Star/Snowflake Schema)",
-      "ETL Pipeline Automation (AWS Glue, SQL, Python)",
+      "ETL Pipeline Automation (AWS Glue, Azure Synapse, SQL, Python)",
       "Data Warehouse Architecture & Governance",
       "Real-Time & Batch Processing Pipelines",
       "Data Quality, Validation & Documentation Standards",
     ],
-    technologies: ["PostgreSQL", "SQL Server", "AWS Glue", "Python", "Pandas", "Apache Airflow", "dbt"],
+    technologies: ["PostgreSQL", "SQL Server", "AWS Glue", "Azure Synapse", "Microsoft Fabric", "Python", "Pandas", "Apache Airflow", "dbt"],
     benefits: [
       "Reliable, automated data pipelines",
       "Scalable warehouse architecture",
@@ -678,7 +678,7 @@ export const techStack: TechStackCategory[] = [
   },
   {
     category: "Cloud & MLOps",
-    technologies: ["Docker", "Kubernetes", "FastAPI", "Firebase", "Cloud Run", "AWS Glue", "MLflow"],
+    technologies: ["Docker", "Kubernetes", "FastAPI", "Firebase", "Cloud Run", "AWS Glue", "Azure Synapse", "Microsoft Fabric", "MLflow"],
   },
   {
     category: "Data & Analytics",
@@ -703,7 +703,7 @@ export const whyChooseUs: WhyChooseUsItem[] = [
   {
     title: "Deep Technical Expertise",
     description:
-      "NUST-trained engineers with hands-on experience across AI, computer vision, data engineering, and full-stack development. We go deep where it matters.",
+      "Engineers with hands-on experience across AI, computer vision, data engineering, and full-stack development. We go deep where it matters.",
   },
   {
     title: "Transparent & Collaborative",
@@ -726,7 +726,7 @@ export const team: TeamMember[] = [
     name: "Afzal Khan",
     initials: "AK",
     role: "AI Engineer · ML/DL · Computer Vision · MLOps",
-    bio: "3+ years building production AI systems — from LLM-powered agent ecosystems and RAG pipelines to real-time computer vision on edge hardware. NUST Mechatronics graduate, MIT MicroMasters in Statistics & Data Science.",
+    bio: "Building production AI systems — from LLM-powered agent ecosystems and RAG pipelines to real-time computer vision on edge hardware. MIT MicroMasters in Statistics & Data Science.",
     highlights: [
       "Agent ecosystems (Google ADK, n8n, Firebase)",
       "Edge AI on NVIDIA Jetson (TensorRT, ONNX)",
@@ -735,15 +735,15 @@ export const team: TeamMember[] = [
     ],
   },
   {
-    name: "Faisal Anwar Khan",
-    initials: "FK",
-    role: "BI Architect · Data Analytics · Data Engineering",
-    bio: "Business Intelligence and Data Analytics professional with international experience across Japan, Pakistan, and US-based clients. NUST Mechatronics graduate, specialist in turning raw data into strategic decision-making frameworks.",
+    name: "Taha Rasheed",
+    initials: "TR",
+    role: "AI Engineer · Data Analytics · Cloud Data Engineering",
+    bio: "AI and Data Analytics professional with experience across US and Pakistan-based clients. Specialist in Azure cloud data platforms, BI reporting, and AI agent development — from enterprise data warehouses to production agent ecosystems.",
     highlights: [
-      "Data warehouse design (3NF, Star, Snowflake)",
-      "Executive dashboards in Tableau & Power BI",
-      "Retail analytics for Adastria (Tokyo)",
-      "Financial modeling, forecasting & KPI frameworks",
+      "Azure Synapse & Microsoft Fabric data pipelines",
+      "Power BI dashboards with advanced DAX",
+      "AI agent ecosystems (Google ADK, n8n, Firebase)",
+      "ETL automation & data warehouse design",
     ],
   },
 ];

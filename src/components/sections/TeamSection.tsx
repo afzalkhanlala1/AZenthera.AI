@@ -17,7 +17,7 @@ export function TeamSection() {
               <span className="gradient-text">AZenthera</span>
             </>
           }
-          description="Two NUST-trained engineers with complementary expertise spanning AI, data, and systems engineering."
+          description="Engineers with complementary expertise spanning AI, data, and systems engineering."
         />
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -35,7 +35,7 @@ export function TeamSection() {
                     {member.initials}
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-1">
+                  <h3 className="text-xl font-bold text-foreground mb-1">
                     {member.name}
                   </h3>
                   <p className="text-accent text-sm font-medium mb-4">
@@ -49,7 +49,7 @@ export function TeamSection() {
                     {member.highlights.map((highlight) => (
                       <div
                         key={highlight}
-                        className="flex items-start gap-2 text-sm text-white/80"
+                        className="flex items-start gap-2 text-sm text-foreground/80"
                       >
                         <span className="text-accent font-semibold mt-0.5 flex-shrink-0">
                           &rarr;

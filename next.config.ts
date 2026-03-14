@@ -4,8 +4,8 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? "/AZenthera-AI" : "",
-  assetPrefix: isProd ? "/AZenthera-AI/" : "",
+  basePath: isProd ? "/AZenthera.AI" : "",
+  assetPrefix: isProd ? "/AZenthera.AI/" : "",
   images: {
     unoptimized: true,
   },

@@ -12,7 +12,7 @@ function StarRating({ rating }: { rating: number }) {
         <span
           key={i}
           className={`text-lg ${
-            i < rating ? "text-accent" : "text-white/20"
+            i < rating ? "text-accent" : "text-foreground/20"
           }`}
         >
           ★
@@ -51,7 +51,7 @@ export function TestimonialsSection() {
                 </p>
                 <StarRating rating={testimonial.rating} />
                 <div className="mt-4">
-                  <p className="text-white font-semibold">{testimonial.name}</p>
+                  <p className="text-foreground font-semibold">{testimonial.name}</p>
                   <p className="text-text-muted text-sm">
                     {testimonial.role} at {testimonial.company}
                   </p>

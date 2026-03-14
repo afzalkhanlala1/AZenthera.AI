@@ -29,7 +29,7 @@ export function WhyChooseUs() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/20 to-accent-secondary/20 flex items-center justify-center text-2xl mb-4">
                   {icons[index]}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
                 <p className="text-text-muted text-sm leading-relaxed">

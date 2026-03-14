@@ -25,12 +25,12 @@ export function CaseStudyCard({
         className="glass-card rounded-2xl overflow-hidden group block h-full hover:border-accent/50 transition-colors duration-300"
       >
         <div className="h-48 bg-gradient-to-br from-[#6C63FF]/20 to-[#00D4AA]/10 relative">
-          <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-white/90 backdrop-blur-sm">
+          <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-foreground/10 text-xs font-medium text-foreground/90 backdrop-blur-sm">
             {category}
           </span>
         </div>
         <div className="p-6">
-          <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors">
+          <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
             {title}
           </h3>
           <p className="text-text-muted text-sm line-clamp-2 leading-relaxed mb-4">

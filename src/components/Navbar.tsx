@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./Button";
+import { ThemeToggle } from "./ThemeToggle";
 import { services } from "@/lib/data";
 
 const navLinks = [
@@ -36,28 +37,25 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-white/5" : ""
+        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : ""
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="font-bold text-xl text-white flex-shrink-0">
+          <Link href="/" className="font-bold text-xl text-foreground flex-shrink-0">
             AZenthera<span className="gradient-text"> AI</span>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             <Link
               href="/"
               className={`text-sm font-medium transition-colors ${
-                isActive("/") ? "text-accent" : "text-white/80 hover:text-white"
+                isActive("/") ? "text-accent" : "text-foreground/80 hover:text-foreground"
               }`}
             >
               Home
             </Link>
 
-            {/* Services Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicesOpen(true)}
@@ -67,7 +65,7 @@ export function Navbar() {
                 className={`text-sm font-medium transition-colors flex items-center gap-1 ${
                   pathname.startsWith("/services")
                     ? "text-accent"
-                    : "text-white/80 hover:text-white"
+                    : "text-foreground/80 hover:text-foreground"
                 }`}
               >
                 Services
@@ -100,10 +98,10 @@ export function Navbar() {
                           <Link
                             key={service.slug}
                             href={`/services/${service.slug}`}
-                            className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                            className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-foreground/5 transition-colors"
                           >
                             <span className="text-lg">{service.icon}</span>
-                            <span className="text-sm font-medium text-white">
+                            <span className="text-sm font-medium text-foreground">
                               {service.shortTitle}
                             </span>
                           </Link>
@@ -122,7 +120,7 @@ export function Navbar() {
                 className={`text-sm font-medium transition-colors ${
                   isActive(link.href)
                     ? "text-accent"
-                    : "text-white/80 hover:text-white"
+                    : "text-foreground/80 hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -130,8 +128,8 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA + Mobile menu button */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
             <div className="hidden md:block">
               <Button href="/contact" variant="primary" size="sm">
                 Book Consultation
@@ -139,7 +137,7 @@ export function Navbar() {
             </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-white/80 hover:text-white"
+              className="lg:hidden p-2 text-foreground/80 hover:text-foreground"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -156,7 +154,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -176,7 +173,7 @@ export function Navbar() {
             >
               <Link
                 href="/"
-                className={`text-lg font-medium ${isActive("/") ? "text-accent" : "text-white"}`}
+                className={`text-lg font-medium ${isActive("/") ? "text-accent" : "text-foreground"}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -188,7 +185,7 @@ export function Navbar() {
                     <Link
                       key={service.slug}
                       href={`/services/${service.slug}`}
-                      className="flex items-center gap-2 py-2 text-white/80 hover:text-white"
+                      className="flex items-center gap-2 py-2 text-foreground/80 hover:text-foreground"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <span>{service.icon}</span>
@@ -201,7 +198,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-lg font-medium ${isActive(link.href) ? "text-accent" : "text-white"}`}
+                  className={`text-lg font-medium ${isActive(link.href) ? "text-accent" : "text-foreground"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}

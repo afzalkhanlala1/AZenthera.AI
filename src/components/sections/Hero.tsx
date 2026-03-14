@@ -43,7 +43,7 @@ export function Hero() {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -109,9 +109,9 @@ export function Hero() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="bg-background/60 border border-white/5 rounded-xl p-4 text-center"
+                    className="bg-background/60 border border-border rounded-xl p-4 text-center"
                   >
-                    <div className="text-2xl font-bold text-white">
+                    <div className="text-2xl font-bold text-foreground">
                       {stat.value}
                     </div>
                     <div className="text-[10px] text-text-muted uppercase tracking-widest mt-1">

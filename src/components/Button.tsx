@@ -10,7 +10,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] text-white hover:shadow-lg hover:shadow-[#6C63FF]/25 transition-all",
   secondary:
-    "bg-white/5 border border-white/10 text-white hover:bg-white/10",
+    "bg-foreground/5 border border-foreground/10 text-foreground hover:bg-foreground/10",
   outline:
     "border-2 border-[#6C63FF] text-[#6C63FF] hover:bg-[#6C63FF] hover:text-white",
 };
