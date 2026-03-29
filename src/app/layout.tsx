@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     "data engineering",
     "data analytics",
     "generative AI",
-    "IoT development",
     "edge AI",
   ],
   openGraph: {

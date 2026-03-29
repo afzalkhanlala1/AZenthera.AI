@@ -20,8 +20,8 @@ function AnimatedStatCounter({
 
   useEffect(() => {
     if (!isInView) return;
-    const duration = 1500;
-    const steps = 60;
+    const duration = 1200;
+    const steps = 50;
     const increment = num / steps;
     let current = 0;
     const timer = setInterval(() => {
@@ -50,24 +50,32 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section className="py-16 px-6" ref={ref}>
+    <section className="border-y border-border py-16 px-6 bg-surface/30" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="glass-card rounded-2xl p-8 md:p-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="grid grid-cols-2 md:grid-cols-4"
+          initial={{ opacity: 0, y: 14 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold gradient-text">
-                  <AnimatedStatCounter value={stat.value} isInView={isInView} />
-                </div>
-                <p className="text-text-muted mt-2 font-medium">{stat.label}</p>
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              className={`text-center py-4 md:py-0 ${
+                index < stats.length - 1
+                  ? "border-r border-border/60 px-6 md:px-10"
+                  : "px-6 md:px-10"
+              } ${index >= 2 ? "border-t border-border/60 md:border-t-0 pt-8 md:pt-0" : ""}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+            >
+              <div className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2">
+                <AnimatedStatCounter value={stat.value} isInView={isInView} />
               </div>
-            ))}
-          </div>
+              <p className="text-text-muted text-sm font-medium">{stat.label}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

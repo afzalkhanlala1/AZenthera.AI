@@ -13,13 +13,14 @@ export function ServicesGrid() {
           label="Services"
           title={
             <>
-              Our Purpose is To Deliver Excellence In{" "}
-              <span className="gradient-text">AI Service</span>
+              What We{" "}
+              <span className="gradient-text">Build</span>
             </>
           }
+          description="End-to-end AI and data solutions — from raw pipeline to production system."
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {services.map((service, index) => (
             <ServiceCard
               key={service.slug}
@@ -27,13 +28,14 @@ export function ServicesGrid() {
               title={service.shortTitle}
               description={service.description}
               href={`/services/${service.slug}`}
+              slug={service.slug}
               index={index}
             />
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Button href="/services" variant="secondary" size="lg">
+        <div className="mt-10 text-center">
+          <Button href="/services" variant="secondary" size="md">
             Explore All Services
           </Button>
         </div>

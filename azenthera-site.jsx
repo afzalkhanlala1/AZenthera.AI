@@ -122,13 +122,6 @@ const SERVICES = [
     features: ["LLM Fine-Tuning & Custom Model Training", "RAG Chatbots with Knowledge Base Retrieval", "Voicebot Development (ElevenLabs, Vapi)", "Content Generation & Summarization Systems", "Adaptive Learning & Personalization Engines"],
   },
   {
-    id: "iot",
-    label: "IoT & Embedded Systems",
-    icon: "📡",
-    desc: "Secure, scalable IoT solutions connecting devices, collecting telemetry, and delivering real-time intelligence at the edge.",
-    features: ["IoT Strategy, Consulting & Architecture", "Device Integration & Firmware Development", "Cloud & Edge Computing Solutions", "Telemetry Dashboards & Monitoring (40+ screen systems)", "System Integration: Radxa, Armbian, Networked Devices"],
-  },
-  {
     id: "web-saas",
     label: "Web & SaaS Development",
     icon: "🚀",

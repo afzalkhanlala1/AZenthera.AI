@@ -8,17 +8,17 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] text-white hover:shadow-lg hover:shadow-[#6C63FF]/25 transition-all",
+    "bg-accent text-white hover:bg-accent/90 shadow-sm",
   secondary:
-    "bg-foreground/5 border border-foreground/10 text-foreground hover:bg-foreground/10",
+    "bg-surface border border-border text-foreground hover:bg-surface-light",
   outline:
-    "border-2 border-[#6C63FF] text-[#6C63FF] hover:bg-[#6C63FF] hover:text-white",
+    "border border-accent text-accent hover:bg-accent hover:text-white",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3",
-  lg: "px-8 py-4 text-lg",
+  sm: "px-3.5 py-1.5 text-sm",
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-6 py-3 text-[15px]",
 };
 
 interface ButtonProps {
@@ -41,7 +41,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const baseStyles =
-    "rounded-full font-medium inline-flex items-center justify-center " +
+    "rounded-lg font-medium inline-flex items-center justify-center transition-all duration-150 " +
     variantStyles[variant] +
     " " +
     sizeStyles[size];
@@ -49,8 +49,9 @@ export function Button({
   const combinedClassName = `${baseStyles} ${className}`.trim();
 
   const motionProps = {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 },
+    whileHover: { scale: 1.015 },
+    whileTap: { scale: 0.985 },
+    transition: { duration: 0.1 },
   };
 
   if (href) {

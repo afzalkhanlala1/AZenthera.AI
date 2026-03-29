@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "What services do you offer?",
     answer:
-      "We offer AI Integration & Development, AI Agents & Automation, Computer Vision & Edge AI, Custom ML & Deep Learning, Data Engineering & Pipelines, Data Analytics & BI Dashboards, Generative AI Solutions, IoT & Embedded Systems, and Web & SaaS Development.",
+      "We offer AI Integration & Development, AI Agents & Automation, Computer Vision & Edge AI, Custom ML & Deep Learning, Data Engineering & Pipelines, Data Analytics & BI Dashboards, Generative AI Solutions, and Web & SaaS Development.",
   },
   {
     question: "How does pricing work?",

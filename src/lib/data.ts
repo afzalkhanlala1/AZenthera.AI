@@ -107,7 +107,6 @@ export const navLinks: NavLink[] = [
       { href: "/services/data-engineering", label: "Data Engineering & Pipelines" },
       { href: "/services/data-analytics", label: "Data Analytics & BI Dashboards" },
       { href: "/services/generative-ai", label: "Generative AI Solutions" },
-      { href: "/services/iot-development", label: "IoT & Embedded Systems" },
       { href: "/services/web-saas", label: "Web & SaaS Development" },
     ],
   },
@@ -303,32 +302,6 @@ export const services: Service[] = [
       "Generative AI is transforming how businesses create content, automate workflows, and engage with customers. We build custom LLM solutions, RAG-powered chatbots, and voice-enabled applications using the latest models. Whether you need a customer support bot, a content generation system, or a voice assistant, we deliver production-ready Gen-AI solutions.",
     heroDescription:
       "Leverage LLMs, fine-tuning, and voice AI to transform your workflows at scale.",
-  },
-  {
-    slug: "iot-development",
-    title: "IoT & Embedded Systems",
-    shortTitle: "IoT & Embedded",
-    description:
-      "Secure, scalable IoT solutions connecting devices, collecting telemetry, and delivering real-time intelligence at the edge.",
-    icon: "📡",
-    features: [
-      "IoT Strategy, Consulting & Architecture",
-      "Device Integration & Firmware Development",
-      "Cloud & Edge Computing Solutions",
-      "Telemetry Dashboards & Monitoring (40+ screen systems)",
-      "System Integration: Radxa, Armbian, Networked Devices",
-    ],
-    technologies: ["MQTT", "Radxa", "Armbian", "Docker", "Node-RED", "Grafana", "InfluxDB"],
-    benefits: [
-      "Unified device management and monitoring",
-      "Real-time telemetry and alerting",
-      "Edge intelligence for low-latency decisions",
-      "Scalable from prototype to production fleet",
-    ],
-    overview:
-      "We build secure, scalable IoT solutions that connect devices, collect telemetry, and deliver real-time intelligence at the edge. From IoT strategy and device integration to firmware development and monitoring dashboards (40+ screen systems), we handle the full stack of embedded and IoT engineering.",
-    heroDescription:
-      "Secure, scalable IoT solutions from device firmware to cloud dashboards.",
   },
   {
     slug: "web-saas",
@@ -763,7 +736,6 @@ export const footerLinks: FooterLinkGroup[] = [
       { href: "/services/data-engineering", label: "Data Engineering & Pipelines" },
       { href: "/services/data-analytics", label: "Data Analytics & BI Dashboards" },
       { href: "/services/generative-ai", label: "Generative AI Solutions" },
-      { href: "/services/iot-development", label: "IoT & Embedded Systems" },
       { href: "/services/web-saas", label: "Web & SaaS Development" },
     ],
   },

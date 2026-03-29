@@ -3,25 +3,25 @@
 @variant dark (&:is(.dark, .dark *));
 
 :root {
-  --background: #fafbfc;
-  --foreground: #1a1a2e;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
   --accent: #6C63FF;
   --accent-secondary: #00B894;
-  --surface: #f0f1f5;
-  --surface-light: #e4e5ec;
-  --border: rgba(0, 0, 0, 0.08);
-  --text-muted: #64647a;
+  --surface: #f5f5f7;
+  --surface-light: #e8e8ed;
+  --border: #d1d1d6;
+  --text-muted: #6e6e73;
 }
 
 .dark {
-  --background: #050505;
-  --foreground: #ededed;
-  --accent: #6C63FF;
+  --background: #050507;
+  --foreground: #f5f5f7;
+  --accent: #8b85ff;
   --accent-secondary: #00D4AA;
-  --surface: #0A0A0F;
-  --surface-light: #12121A;
-  --border: rgba(255, 255, 255, 0.06);
-  --text-muted: #8B8B9E;
+  --surface: #111116;
+  --surface-light: #1c1c22;
+  --border: #2a2a32;
+  --text-muted: #98989f;
 }
 
 @theme inline {
@@ -39,7 +39,8 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #6C63FF transparent;
+  scrollbar-color: var(--border) transparent;
+  box-sizing: border-box;
 }
 
 html {
@@ -51,65 +52,76 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 ::selection {
-  background: rgba(108, 99, 255, 0.2);
+  background: rgba(108, 99, 255, 0.12);
   color: var(--foreground);
 }
 
 .dark ::selection {
-  background: rgba(108, 99, 255, 0.3);
+  background: rgba(139, 133, 255, 0.2);
   color: #fff;
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
+/* Static gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #6C63FF, #00D4AA, #6C63FF);
-  background-size: 200% 200%;
+  background: linear-gradient(125deg, #6C63FF 0%, #a59dff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 4s ease infinite;
 }
 
+.dark .gradient-text {
+  background: linear-gradient(125deg, #8b85ff 0%, #c7c3ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Clean surface card — replaces glassmorphism */
 .glass-card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(108, 99, 255, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
 .dark .glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--surface);
+  border-color: var(--border);
 }
 
-.dark .glass-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(108, 99, 255, 0.3);
+/* Hero grid */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
+.dark .hero-grid {
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.035) 1px, transparent 1px);
+}
+
+/* Radial fade overlay */
+.radial-fade {
+  background: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(108, 99, 255, 0.045) 0%, transparent 75%);
+}
+
+.dark .radial-fade {
+  background: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(108, 99, 255, 0.07) 0%, transparent 75%);
+}
+
+/* Glow border — kept for backward compat, simplified */
 .glow-border {
   position: relative;
 }
@@ -119,33 +131,12 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, #6C63FF, #00D4AA);
+  background: linear-gradient(135deg, #6C63FF, #a59dff);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
   z-index: -1;
 }
 
 .glow-border:hover::before {
-  opacity: 0.5;
-}
-
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(108, 99, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 99, 255, 0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.dark .hero-grid {
-  background-image:
-    linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
-}
-
-.radial-fade {
-  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.05) 0%, transparent 70%);
-}
-
-.dark .radial-fade {
-  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.08) 0%, transparent 70%);
+  opacity: 0.35;
 }

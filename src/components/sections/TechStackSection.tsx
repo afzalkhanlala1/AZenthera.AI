@@ -18,35 +18,30 @@ export function TechStackSection() {
           }
         />
 
-        <div className="mt-16 space-y-10">
+        <div className="mt-14 space-y-8">
           {techStack.map((category, categoryIndex) => (
-            <AnimatedSection
-              key={category.category}
-              delay={categoryIndex * 0.1}
-            >
+            <AnimatedSection key={category.category} delay={categoryIndex * 0.07}>
               <div>
-                <h3 className="text-lg font-semibold text-accent mb-4">
+                <h3 className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-3">
                   {category.category}
                 </h3>
                 <motion.div
-                  className="flex flex-wrap gap-3"
+                  className="flex flex-wrap gap-2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   variants={{
                     visible: {
-                      transition: {
-                        staggerChildren: 0.05,
-                      },
+                      transition: { staggerChildren: 0.04 },
                     },
                   }}
                 >
-                  {category.technologies.map((tech, techIndex) => (
+                  {category.technologies.map((tech) => (
                     <motion.span
                       key={tech}
-                      className="glass-card rounded-full px-4 py-2 text-sm text-text-muted hover:text-foreground hover:border-accent/50 transition-colors"
+                      className="bg-surface border border-border rounded-lg px-3 py-1.5 text-sm text-text-muted hover:text-foreground hover:border-accent/30 transition-colors cursor-default"
                       variants={{
-                        hidden: { opacity: 0, y: 10 },
+                        hidden: { opacity: 0, y: 8 },
                         visible: { opacity: 1, y: 0 },
                       }}
                     >
