@@ -4,18 +4,20 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { TechStackSection } from "@/components/sections/TechStackSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { StatsSection } from "@/components/sections/StatsSection";
+import { CaseStudiesPreview } from "@/components/sections/CaseStudiesPreview";
+import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <StatsSection />
       <ServicesGrid />
       <WhyChooseUs />
       <ProcessSection />
+      <CaseStudiesPreview />
       <TechStackSection />
       <TestimonialsSection />
+      <ContactCTA />
     </>
   );
 }

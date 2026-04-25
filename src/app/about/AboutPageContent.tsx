@@ -1,212 +1,137 @@
 "use client";
 
-import { AnimatedSection } from "@/components/AnimatedSection";
-import { SectionHeading } from "@/components/SectionHeading";
-import { Button } from "@/components/Button";
-import { team } from "@/lib/data";
-
-const aboutHighlights = [
-  { icon: "🎓", title: "Expert Engineers", desc: "Top-tier engineering talent" },
-  { icon: "🌍", title: "Global Clients", desc: "USA, Japan, UAE, Europe" },
-  { icon: "⚡", title: "Production-Grade", desc: "Not demos — real systems" },
-  { icon: "🤝", title: "Transparent Pricing", desc: "No hidden costs or surprises" },
-];
+import { motion } from "framer-motion";
+import { PageHero } from "@/components/PageHero";
+import { TeamSection } from "@/components/sections/TeamSection";
+import { ContactCTA } from "@/components/sections/ContactCTA";
 
 const values = [
   {
-    title: "Innovation",
-    icon: "💡",
+    title: "Production over polish",
     description:
-      "We push boundaries and embrace cutting-edge AI technologies to deliver exceptional solutions.",
+      "Every line we ship is shaped by what survives Monday morning, not what looks good in a deck.",
   },
   {
-    title: "Quality",
-    icon: "✨",
+    title: "Senior by default",
     description:
-      "Every model, every pipeline, every dashboard — we deliver excellence that stands the test of production.",
+      "There is no junior bench to subsidise. The engineer that scopes your work is the engineer that ships it.",
   },
   {
-    title: "Collaboration",
-    icon: "🤝",
+    title: "Plain accountability",
     description:
-      "We work closely with our clients as true partners, ensuring alignment at every step.",
+      "Fixed scope, fixed price, written-down assumptions. If something slips we say so the same week.",
   },
   {
-    title: "Transparency",
-    icon: "🔍",
+    title: "Long after launch",
     description:
-      "Clear communication, honest timelines, and open processes throughout our engagement.",
+      "We measure success by what runs in year two, not what demoed in week six. Maintenance is part of the build.",
   },
+];
+
+const facts = [
+  { label: "Founded", value: "2021" },
+  { label: "Engineers", value: "Senior · 2 partners" },
+  { label: "Pricing", value: "Fixed-scope · Transparent" },
+  { label: "Time zones", value: "GMT-7 → GMT+9" },
 ];
 
 export function AboutPageContent() {
   return (
     <>
-      <section className="relative py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 hero-grid" />
-        <div className="absolute inset-0 radial-fade" />
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <AnimatedSection>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground text-center">
-              About <span className="gradient-text">AZenthera AI</span>
-            </h1>
-            <p className="text-text-muted text-lg md:text-xl text-center max-w-2xl mx-auto mt-6">
-              Engineers building intelligent systems that solve real business problems —
-              from California startups to Japanese fashion retailers.
+      <PageHero
+        eyebrow="The studio"
+        marker="A/01"
+        title={
+          <>
+            A small <em className="serif-italic text-text-muted">engineering</em> studio
+            for production AI.
+          </>
+        }
+        description="Two senior engineers, a network of trusted specialists, and one rule: ship what works."
+        meta={facts}
+      />
+
+      {/* Long-form story */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-3">
+            <p className="eyebrow">Long version</p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-9 space-y-7 text-[17px] lg:text-[18.5px] leading-[1.6] text-foreground-soft max-w-[60ch]"
+          >
+            <p>
+              Azenthera is run by engineers who got tired of glossy demos that
+              never made it past the quarter. We started the studio to build
+              the other half — the boring half — that actually keeps systems
+              running. Pipelines, observability, fail-safes, the dashboard
+              your CFO opens on Monday.
             </p>
-          </AnimatedSection>
+            <p>
+              Our clients range from California-based AI startups to a Japanese
+              fashion retailer, defence contractors, and FMCG operators inside
+              PepsiCo. We&apos;ve processed over 200 million data rows, deployed
+              multi-agent ecosystems for entire departments, and tuned
+              real-time computer-vision models on edge hardware to within an
+              inch of their thermal budget.
+            </p>
+            <p>
+              We work as a lean, remote-first team. That means you get
+              senior-level engineering at competitive rates, with the
+              responsiveness of a dedicated in-house squad — and none of the
+              overhead of a 200-person agency.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <SectionHeading
-              label="Our Story"
-              title="Who We Are"
-              description="A lean, remote-first team delivering senior-level engineering."
-              center={false}
-            />
-          </AnimatedSection>
-          <div className="mt-16 grid md:grid-cols-2 gap-12 items-start">
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-6">
-                <p className="text-text-muted text-lg leading-relaxed">
-                  AZenthera AI was founded by engineers who share a passion for building
-                  intelligent systems that solve real business problems. With complementary expertise spanning AI
-                  engineering, computer vision, data science, and business intelligence, we deliver end-to-end solutions
-                  from proof-of-concept to production deployment.
-                </p>
-                <p className="text-text-muted text-lg leading-relaxed">
-                  Our clients range from California-based startups to Japanese fashion retailers, from defense contractors
-                  to FMCG giants like PepsiCo. We&apos;ve processed over 200 million data rows, deployed multi-agent
-                  ecosystems, and optimized real-time computer vision systems on edge hardware.
-                </p>
-                <p className="text-text-muted text-lg leading-relaxed">
-                  We operate as a lean, remote-first team — which means you get senior-level engineering talent at
-                  competitive rates, with the flexibility and responsiveness of a dedicated in-house team.
-                </p>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <div className="grid grid-cols-2 gap-4">
-                {aboutHighlights.map((hl) => (
-                  <div key={hl.title} className="glass-card rounded-2xl p-6 text-center">
-                    <div className="text-3xl mb-3">{hl.icon}</div>
-                    <h4 className="text-foreground font-semibold text-sm">{hl.title}</h4>
-                    <p className="text-text-muted text-xs mt-1">{hl.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            <AnimatedSection>
-              <div className="glass-card rounded-2xl p-8 h-full">
-                <div className="text-3xl mb-4">🎯</div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
-                <p className="text-text-muted text-lg">
-                  Build production-grade AI and data solutions that create measurable business impact — accessible to
-                  startups and enterprises alike, with world-class engineering and transparent pricing.
-                </p>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div className="glass-card rounded-2xl p-8 h-full">
-                <div className="text-3xl mb-4">🔮</div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
-                <p className="text-text-muted text-lg">
-                  Be the trusted engineering partner for companies seeking to build, deploy, and scale intelligent systems
-                  — from AI agents and edge vision to data warehouses and executive analytics.
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <SectionHeading
-              label="Our Team"
-              title="Meet the Engineers Behind AZenthera"
-              description="Engineers with complementary expertise spanning AI, data, and systems engineering."
-            />
-          </AnimatedSection>
-          <div className="mt-16 grid md:grid-cols-2 gap-8">
-            {team.map((member, index) => (
-              <AnimatedSection key={member.name} delay={index * 0.1}>
-                <div className="glass-card rounded-2xl p-8 h-full relative overflow-hidden">
-                  <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-accent/5 blur-3xl" />
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center text-2xl font-bold text-white mb-5">
-                      {member.initials}
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-                    <p className="text-accent text-sm font-medium mb-4">{member.role}</p>
-                    <p className="text-text-muted text-sm leading-relaxed mb-6">{member.bio}</p>
-                    <div className="space-y-2">
-                      {member.highlights.map((hl) => (
-                        <div key={hl} className="flex items-start gap-2 text-sm text-foreground/80">
-                          <span className="text-accent font-semibold mt-0.5 flex-shrink-0">&rarr;</span>
-                          {hl}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <SectionHeading
-              label="Our Values"
-              title="What Drives Us"
-              description="The principles that guide every project and partnership."
-            />
-          </AnimatedSection>
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <AnimatedSection key={value.title} delay={index * 0.08}>
-                <div className="glass-card rounded-2xl p-6 h-full">
-                  <div className="text-3xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
-                  <p className="text-text-muted">{value.description}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-4">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <div className="glass-card rounded-3xl p-12 md:p-16 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready to work with us?
+      {/* Manifesto / values */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 mb-14">
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-5">Manifesto</p>
+              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+                Four things we&apos;ll <em className="serif-italic text-text-muted">never</em> compromise on.
               </h2>
-              <p className="text-text-muted text-lg max-w-xl mx-auto mb-8">
-                Let&apos;s discuss how we can bring production-grade AI and data solutions to your business.
-              </p>
-              <Button href="/contact" variant="primary" size="lg">
-                Book a Free Consultation
-              </Button>
             </div>
-          </AnimatedSection>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-background p-8 lg:p-10"
+              >
+                <div className="flex items-baseline gap-4 mb-5">
+                  <span className="font-mono text-[11px] tabular-nums text-text-subtle">
+                    /0{i + 1}
+                  </span>
+                  <span className="h-px flex-1 bg-border" />
+                </div>
+                <h3 className="text-[22px] lg:text-[26px] tracking-[-0.02em] text-foreground leading-tight">
+                  {v.title}
+                </h3>
+                <p className="mt-3 text-[14.5px] leading-[1.6] text-text-muted">
+                  {v.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
+
+      <TeamSection />
+      <ContactCTA />
     </>
   );
 }

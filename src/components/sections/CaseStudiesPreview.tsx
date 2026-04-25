@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Button } from "@/components/Button";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { caseStudies } from "@/lib/data";
 
@@ -9,36 +9,43 @@ export function CaseStudiesPreview() {
   const previewStudies = caseStudies.slice(0, 3);
 
   return (
-    <section className="py-24 px-6 bg-surface border-y border-border">
-      <div className="max-w-7xl mx-auto">
-        <SectionHeading
-          label="Case Studies"
-          title={
-            <>
-              Work That <span className="gradient-text">Speaks</span>
-            </>
-          }
-          description="Real systems built for real teams, with measurable results."
-        />
-
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {previewStudies.map((study, index) => (
-            <CaseStudyCard
-              key={study.slug}
-              title={study.title}
-              category={study.category}
-              description={study.description}
-              slug={study.slug}
-              results={study.results}
-              index={index}
+    <section className="relative py-28 lg:py-36 px-6 lg:px-10 bg-background-alt hairline-y">
+      <div className="max-w-[1320px] mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+          <div className="lg:col-span-8">
+            <SectionHeading
+              index="07"
+              label="Selected work"
+              title={
+                <>
+                  Six engagements where the <em className="serif-italic text-text-muted">numbers</em> outlived the contract.
+                </>
+              }
             />
-          ))}
+          </div>
+          <div className="lg:col-span-4 lg:text-right">
+            <Link
+              href="/case-studies"
+              className="link-underline text-[13.5px] tracking-tight text-foreground"
+            >
+              The full archive →
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-10 text-center">
-          <Button href="/case-studies" variant="secondary" size="md">
-            View All Case Studies
-          </Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border">
+          {previewStudies.map((study, index) => (
+            <div key={study.slug} className="bg-background">
+              <CaseStudyCard
+                title={study.title}
+                category={study.category}
+                description={study.description}
+                slug={study.slug}
+                results={study.results}
+                index={index}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

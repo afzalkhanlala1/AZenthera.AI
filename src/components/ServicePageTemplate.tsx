@@ -1,142 +1,197 @@
 "use client";
 
-import { AnimatedSection } from "@/components/AnimatedSection";
-import { Button } from "@/components/Button";
-import type { Service } from "@/lib/data";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { PageHero } from "@/components/PageHero";
+import { ContactCTA } from "@/components/sections/ContactCTA";
+import { services, type Service } from "@/lib/data";
 
 interface ServicePageTemplateProps {
   service: Service;
 }
 
-function CheckIcon() {
-  return (
-    <svg
-      className="w-5 h-5 flex-shrink-0 text-accent-secondary"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 13l4 4L19 7"
-      />
-    </svg>
-  );
-}
-
 export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
+  const others = services.filter((s) => s.slug !== service.slug).slice(0, 4);
+
   return (
     <>
-      <AnimatedSection className="bg-surface py-24 relative overflow-hidden">
-        <div className="hero-grid absolute inset-0 opacity-50" />
-        <div className="radial-fade absolute inset-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-5xl md:text-6xl mb-6 block">{service.icon}</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="gradient-text">{service.title}</span>
-            </h1>
-            <p className="text-text-muted text-lg md:text-xl mb-10">
-              {service.heroDescription}
-            </p>
-            <Button href="/contact" variant="primary" size="lg">
-              Get Started
-            </Button>
+      <PageHero
+        eyebrow={service.shortTitle}
+        marker={`S/${String(
+          services.findIndex((s) => s.slug === service.slug) + 1
+        ).padStart(2, "0")}`}
+        title={
+          <>
+            {service.title.split(" & ")[0]}
+            {service.title.includes(" & ") && (
+              <>
+                {" "}
+                <span className="serif-italic text-text-muted">&amp;</span>{" "}
+                {service.title.split(" & ")[1]}
+              </>
+            )}
+          </>
+        }
+        description={service.heroDescription}
+        meta={[
+          { label: "Discipline", value: service.shortTitle },
+          { label: "Engagement", value: "Fixed-scope" },
+          { label: "Tooling", value: `${service.technologies.length}+ stack` },
+        ]}
+      />
+
+      {/* Overview */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-3">
+            <p className="eyebrow">Overview</p>
           </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-9"
+          >
+            <p className="font-display text-[26px] lg:text-[34px] leading-[1.2] tracking-[-0.015em] text-foreground max-w-[60ch]">
+              {service.overview}
+            </p>
+          </motion.div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-20" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Overview
-          </h2>
-          <p className="text-text-muted text-lg leading-relaxed max-w-3xl">
-            {service.overview}
-          </p>
-        </div>
-      </AnimatedSection>
+      {/* Capabilities */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 mb-12">
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-5">Capabilities</p>
+              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+                What we <em className="serif-italic text-text-muted">deliver</em>.
+              </h2>
+            </div>
+            <div className="lg:col-span-7 lg:pt-6">
+              <p className="text-[16px] leading-[1.55] text-text-muted max-w-[48ch]">
+                The list below maps to the deliverables we&apos;ll write into
+                the proposal — every line is a system we&apos;ve shipped before.
+              </p>
+            </div>
+          </div>
 
-      <AnimatedSection className="py-20 bg-surface/50" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">
-            What We Offer
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="border-t border-border">
             {service.features.map((feature, index) => (
-              <div
-                key={index}
-                className="glass-card rounded-2xl p-6 flex items-start gap-4"
+              <motion.li
+                key={feature}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="grid grid-cols-12 gap-4 py-6 border-b border-border items-baseline"
               >
-                <CheckIcon />
-                <p className="text-foreground/90">{feature}</p>
-              </div>
+                <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle">
+                  /{String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="col-span-10 lg:col-span-11 text-[16px] lg:text-[18px] tracking-[-0.015em] text-foreground">
+                  {feature}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 mb-14">
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-5">Outcomes</p>
+              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+                What you <em className="serif-italic text-text-muted">get</em>.
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
+            {service.benefits.map((benefit, i) => (
+              <motion.div
+                key={benefit}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-surface p-7 lg:p-8"
+              >
+                <span className="font-mono text-[11px] tabular-nums text-text-subtle">
+                  B/0{i + 1}
+                </span>
+                <p className="mt-5 text-[17px] lg:text-[19px] tracking-[-0.015em] text-foreground leading-snug">
+                  {benefit}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-20" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-            Technologies We Use
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {service.technologies.map((tech, index) => (
+      {/* Stack */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-4">
+            <p className="eyebrow mb-5">The stack</p>
+            <h2 className="font-display text-[40px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-foreground">
+              Tools we&apos;ll <em className="serif-italic text-text-muted">use</em>.
+            </h2>
+          </div>
+          <div className="lg:col-span-8 flex flex-wrap gap-x-8 gap-y-3 lg:pt-6">
+            {service.technologies.map((tech) => (
               <span
-                key={index}
-                className="px-4 py-2 rounded-full glass-card text-foreground/90 text-sm font-medium border border-border"
+                key={tech}
+                className="text-[18px] lg:text-[22px] tracking-[-0.01em] text-foreground-soft"
               >
                 {tech}
+                <span className="text-text-subtle ml-8">·</span>
               </span>
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-20 bg-surface/50" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">
-            Key Benefits
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {service.benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className={`glass-card rounded-2xl p-6 flex items-start gap-4 ${
-                  index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-                }`}
+      {/* Other services */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="flex items-end justify-between mb-12">
+            <p className="eyebrow">Adjacent capabilities</p>
+            <Link
+              href="/services"
+              className="link-underline text-[13.5px] text-foreground"
+            >
+              All eight →
+            </Link>
+          </div>
+          <div className="border-t border-border">
+            {others.map((s, i) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="group grid grid-cols-12 gap-4 py-6 border-b border-border items-baseline hover:bg-surface-elev/40 -mx-2 px-2 transition-colors"
               >
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
-                  {index + 1}
+                <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle">
+                  /{String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-foreground/90">{benefit}</p>
-              </div>
+                <span className="col-span-7 lg:col-span-8 text-[18px] lg:text-[22px] tracking-[-0.02em] text-foreground">
+                  {s.shortTitle}
+                </span>
+                <span className="col-span-3 text-right text-[12.5px] text-text-muted group-hover:text-foreground transition-colors">
+                  Detail →
+                </span>
+              </Link>
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-24" delay={0.1}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-text-muted text-lg mb-8">
-            Let&apos;s discuss how we can help you build intelligent solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/contact" variant="primary" size="lg">
-              Contact Us
-            </Button>
-            <Button href="/case-studies" variant="outline" size="lg">
-              View Case Studies
-            </Button>
-          </div>
-        </div>
-      </AnimatedSection>
+      <ContactCTA />
     </>
   );
 }

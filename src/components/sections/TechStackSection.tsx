@@ -2,55 +2,65 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AnimatedSection } from "@/components/AnimatedSection";
 import { techStack } from "@/lib/data";
+
+// Asymmetric grid widths per row for editorial feel.
+// Each entry is { col, row } in 12-col grid units.
+const layout = [
+  { col: "lg:col-span-7", row: "" },
+  { col: "lg:col-span-5", row: "" },
+  { col: "lg:col-span-4", row: "" },
+  { col: "lg:col-span-8", row: "" },
+  { col: "lg:col-span-6", row: "" },
+  { col: "lg:col-span-6", row: "" },
+];
 
 export function TechStackSection() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 lg:py-36 px-6 lg:px-10 bg-background-alt hairline-y">
+      <div className="max-w-[1320px] mx-auto">
         <SectionHeading
-          label="Tech Stack"
+          index="05"
+          label="Toolkit"
+          split
           title={
             <>
-              Built With <span className="gradient-text">Modern Tools</span>
+              The stack we <em className="serif-italic text-text-muted">actually</em> use in production.
             </>
           }
+          description="Boring where it matters, modern where it pays off. We pick infrastructure that we can support a year from now — not whatever shipped last week."
         />
 
-        <div className="mt-14 space-y-8">
-          {techStack.map((category, categoryIndex) => (
-            <AnimatedSection key={category.category} delay={categoryIndex * 0.07}>
-              <div>
-                <h3 className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-3">
-                  {category.category}
-                </h3>
-                <motion.div
-                  className="flex flex-wrap gap-2"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  variants={{
-                    visible: {
-                      transition: { staggerChildren: 0.04 },
-                    },
-                  }}
-                >
-                  {category.technologies.map((tech) => (
-                    <motion.span
-                      key={tech}
-                      className="bg-surface border border-border rounded-lg px-3 py-1.5 text-sm text-text-muted hover:text-foreground hover:border-accent/30 transition-colors cursor-default"
-                      variants={{
-                        hidden: { opacity: 0, y: 8 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </motion.div>
+        <div className="mt-20 grid lg:grid-cols-12 gap-px bg-border border border-border">
+          {techStack.map((category, i) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className={`bg-background p-7 lg:p-9 ${layout[i]?.col ?? "lg:col-span-6"}`}
+            >
+              <div className="flex items-baseline justify-between mb-7">
+                <p className="eyebrow">{category.category}</p>
+                <span className="font-mono text-[10.5px] text-text-subtle tabular-nums">
+                  {String(i + 1).padStart(2, "0")} / {String(techStack.length).padStart(2, "0")}
+                </span>
               </div>
-            </AnimatedSection>
+              <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
+                {category.technologies.map((tech, ti) => (
+                  <li
+                    key={tech}
+                    className="text-[16px] lg:text-[19px] tracking-[-0.01em] text-foreground-soft hover:text-foreground transition-colors flex items-baseline gap-6"
+                  >
+                    {tech}
+                    {ti < category.technologies.length - 1 && (
+                      <span className="text-text-subtle">·</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>

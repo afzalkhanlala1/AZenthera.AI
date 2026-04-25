@@ -1,47 +1,53 @@
 import { caseStudies } from "@/lib/data";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { PageHero } from "@/components/PageHero";
+import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export const metadata = {
-  title: "Case Studies",
+  title: "Case studies",
   description:
-    "Real projects, measurable results. From agent ecosystems to real-time vision systems — see what AZenthera AI has delivered across industries.",
+    "Selected work from Azenthera AI — agent ecosystems, real-time vision systems, data warehouses, and BI dashboards in production.",
 };
 
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="bg-surface py-24 relative overflow-hidden">
-        <div className="hero-grid absolute inset-0 opacity-50" />
-        <div className="radial-fade absolute inset-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="gradient-text">Case Studies</span>
-            </h1>
-            <p className="text-text-muted text-lg">
-              From agent ecosystems to real-time vision systems — here&apos;s a
-              selection of what we&apos;ve delivered across industries.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Selected work"
+        marker="W/01"
+        title={
+          <>
+            Six engagements, the <em className="serif-italic text-text-muted">numbers</em> that survived.
+          </>
+        }
+        description="Each card is a system still running in production — long after the kickoff deck. Numbers are exactly what the client measured."
+        meta={[
+          { label: "Engagements", value: String(caseStudies.length) },
+          { label: "Industries", value: "InsurTech → Defense" },
+          { label: "Live", value: "All in production" },
+        ]}
+      />
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
             {caseStudies.map((study, index) => (
-              <CaseStudyCard
-                key={study.slug}
-                title={study.title}
-                category={study.category}
-                description={study.description}
-                slug={study.slug}
-                index={index}
-              />
+              <div key={study.slug} className="bg-background">
+                <CaseStudyCard
+                  title={study.title}
+                  category={study.category}
+                  description={study.description}
+                  slug={study.slug}
+                  results={study.results}
+                  index={index}
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      <ContactCTA />
     </>
   );
 }

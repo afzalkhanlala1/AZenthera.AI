@@ -1,40 +1,64 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AnimatedSection } from "@/components/AnimatedSection";
 import { processSteps } from "@/lib/data";
+
+const week = ["wk 0", "wk 1", "wk 2-N", "wk N+", "ongoing"];
 
 export function ProcessSection() {
   return (
-    <section className="py-24 px-6 bg-surface border-y border-border">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 lg:py-36 px-6 lg:px-10">
+      <div className="max-w-[1320px] mx-auto">
         <SectionHeading
-          label="How We Work"
+          index="04"
+          label="Engagement"
+          split
           title={
             <>
-              Our <span className="gradient-text">Process</span>
+              From discovery to deploy — a <em className="serif-italic text-text-muted">five-act</em> rhythm
+              we don&apos;t skip.
             </>
           }
-          description="A proven framework from discovery to production."
+          description="No black-box quotes, no surprise pivots. Every project moves through the same five phases — sized to your scope."
         />
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {processSteps.map((step, index) => (
-            <AnimatedSection key={step.number} delay={index * 0.07}>
-              <div className="relative bg-background border border-border rounded-xl p-5 h-full">
-                {/* Step number */}
-                <span className="font-mono text-[11px] font-semibold text-accent/50 tracking-wider mb-4 block">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-[15px] font-semibold text-foreground mb-2 tracking-tight">
+        <div className="mt-20 relative">
+          {/* Horizontal connector for desktop */}
+          <div
+            aria-hidden
+            className="hidden lg:block absolute top-[68px] left-0 right-0 h-px bg-border"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-border border border-border lg:bg-transparent lg:border-none">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                className="relative bg-background lg:bg-transparent p-6 lg:px-6 lg:py-0 lg:pr-10"
+              >
+                {/* Step indicator */}
+                <div className="lg:flex lg:items-center lg:gap-3">
+                  <span className="inline-flex w-9 h-9 rounded-full border border-foreground bg-background text-foreground items-center justify-center font-mono text-[12px] tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="lg:ml-auto label-mono text-text-subtle">
+                    {week[index]}
+                  </span>
+                </div>
+
+                <h3 className="mt-5 text-[17px] lg:text-[18px] tracking-[-0.02em] text-foreground leading-snug">
                   {step.title}
                 </h3>
-                <p className="text-text-muted text-sm leading-relaxed">
+                <p className="mt-2 text-[13.5px] leading-[1.55] text-text-muted max-w-[28ch]">
                   {step.description}
                 </p>
-              </div>
-            </AnimatedSection>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

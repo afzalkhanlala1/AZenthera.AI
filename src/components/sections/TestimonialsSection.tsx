@@ -1,77 +1,83 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AnimatedSection } from "@/components/AnimatedSection";
 import { testimonials } from "@/lib/data";
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5 mb-4">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          className={`w-3.5 h-3.5 ${i < rating ? "text-amber-400" : "text-border"}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export function TestimonialsSection() {
+  const featured = testimonials[0];
+  const rest = testimonials.slice(1, 5);
+
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 lg:py-36 px-6 lg:px-10">
+      <div className="max-w-[1320px] mx-auto">
         <SectionHeading
-          label="Client Testimonials"
+          index="06"
+          label="In their words"
+          split
           title={
             <>
-              Trusted by <span className="gradient-text">Real Teams</span>
+              Words from teams who <em className="serif-italic text-text-muted">kept</em> shipping after launch.
             </>
           }
-          description="What the teams we've built for have to say."
+          description="Five engagements, one pattern: production-grade systems still running long after the last sprint."
         />
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {testimonials.map((testimonial, index) => (
-            <AnimatedSection key={testimonial.name} delay={index * 0.07}>
-              <div className="relative bg-surface border border-border rounded-xl p-6 h-full flex flex-col hover:border-accent/20 transition-colors duration-200">
-                {/* Decorative quote mark */}
-                <svg
-                  className="absolute top-4 right-5 w-8 h-8 text-accent/8"
-                  fill="currentColor"
-                  viewBox="0 0 32 32"
-                >
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-
-                <StarRating rating={testimonial.rating} />
-
-                <p className="text-[15px] text-text-muted leading-relaxed flex-grow">
-                  {testimonial.quote}
+        <div className="mt-20 grid lg:grid-cols-12 gap-10">
+          {/* Featured */}
+          <motion.figure
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7 flex flex-col"
+          >
+            <span className="font-display italic text-[120px] leading-[0.6] text-accent/40 select-none">
+              &ldquo;
+            </span>
+            <blockquote className="mt-2 font-display text-[28px] lg:text-[40px] leading-[1.1] tracking-[-0.02em] text-foreground">
+              {featured.quote}
+            </blockquote>
+            <figcaption className="mt-10 pt-6 border-t border-border flex items-center justify-between gap-6">
+              <div>
+                <p className="text-[14px] tracking-tight text-foreground">
+                  {featured.name}
                 </p>
-
-                <div className="mt-5 pt-4 border-t border-border flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-accent/10 border border-accent/15 flex items-center justify-center shrink-0">
-                    <span className="text-[11px] font-bold text-accent">
-                      {testimonial.name.split(" ").map((w) => w[0]).join("").slice(0, 2)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground tracking-tight leading-tight">
-                      {testimonial.name}
-                    </p>
-                    <p className="text-xs text-text-muted mt-0.5">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
+                <p className="text-[12.5px] text-text-muted mt-0.5">
+                  {featured.role}
+                </p>
               </div>
-            </AnimatedSection>
-          ))}
+              <span className="font-mono text-[10.5px] text-text-subtle tabular-nums">
+                01 / {String(testimonials.length).padStart(2, "0")}
+              </span>
+            </figcaption>
+          </motion.figure>
+
+          {/* Compact list */}
+          <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-border space-y-px bg-border border border-border rounded-sm overflow-hidden">
+            {rest.map((t, i) => (
+              <motion.figure
+                key={t.name}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-surface p-6"
+              >
+                <blockquote className="text-[14.5px] leading-[1.55] text-foreground-soft">
+                  {t.quote.length > 140
+                    ? t.quote.slice(0, 138).trimEnd() + "…"
+                    : t.quote}
+                </blockquote>
+                <figcaption className="mt-4 flex items-baseline justify-between gap-4">
+                  <span className="text-[12.5px] text-foreground tracking-tight">
+                    {t.company}
+                  </span>
+                  <span className="text-[11.5px] text-text-muted">{t.role}</span>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
         </div>
       </div>
     </section>

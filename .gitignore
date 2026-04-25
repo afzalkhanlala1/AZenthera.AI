@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local agent / editor scratch
+.claude/
+.cursor/
+CLAUDE.md
+
+# personal / private documents (not for public repo)
+*.pdf
+*.docx
+*.pptx
+generate_pdf.py

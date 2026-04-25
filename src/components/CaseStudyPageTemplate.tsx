@@ -1,145 +1,176 @@
 "use client";
 
-import { AnimatedSection } from "@/components/AnimatedSection";
-import { Button } from "@/components/Button";
-import type { CaseStudy } from "@/lib/data";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { PageHero } from "@/components/PageHero";
+import { ContactCTA } from "@/components/sections/ContactCTA";
+import { caseStudies, type CaseStudy } from "@/lib/data";
 
 interface CaseStudyPageTemplateProps {
   caseStudy: CaseStudy;
 }
 
 export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps) {
+  const idx = caseStudies.findIndex((c) => c.slug === caseStudy.slug);
+  const next = caseStudies[(idx + 1) % caseStudies.length];
+
   return (
     <>
-      <AnimatedSection className="bg-surface py-24 relative overflow-hidden">
-        <div className="hero-grid absolute inset-0 opacity-50" />
-        <div className="radial-fade absolute inset-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium mb-6">
-              {caseStudy.category}
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="gradient-text">{caseStudy.title}</span>
-            </h1>
-            <div className="flex flex-wrap gap-6 text-text-muted mb-6">
-              <span>
-                <strong className="text-foreground/90">Client:</strong>{" "}
-                {caseStudy.client}
-              </span>
-              <span>
-                <strong className="text-foreground/90">Duration:</strong>{" "}
-                {caseStudy.duration}
-              </span>
-            </div>
-            <p className="text-text-muted text-lg leading-relaxed">
-              {caseStudy.description}
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
+      <PageHero
+        eyebrow={caseStudy.category}
+        marker={`CS/${String(idx + 1).padStart(2, "0")}`}
+        title={caseStudy.title}
+        description={caseStudy.description}
+        meta={[
+          { label: "Client", value: caseStudy.client },
+          { label: "Duration", value: caseStudy.duration },
+          { label: "Status", value: "Live in production" },
+        ]}
+      />
 
-      <AnimatedSection className="py-20" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            The Problem
-          </h2>
-          <div className="glass-card rounded-2xl p-8 border-l-4 border-rose-500/60">
-            <p className="text-foreground/90 leading-relaxed">{caseStudy.problem}</p>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection className="py-20 bg-surface/50" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Our Solution
-          </h2>
-          <div className="glass-card rounded-2xl p-8 border-l-4 border-accent-secondary/60">
-            <p className="text-foreground/90 leading-relaxed">
-              {caseStudy.solution}
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection className="py-20" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Architecture
-          </h2>
-          <div className="glass-card rounded-2xl p-8 relative overflow-hidden">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/10 via-accent-secondary/10 to-accent/10 opacity-50" />
-            <div className="absolute inset-0 rounded-2xl border border-border" />
-            <div className="relative">
-              <p className="text-foreground/90 leading-relaxed mb-8">
-                {caseStudy.architecture}
-              </p>
-              <div className="h-48 rounded-xl bg-surface/80 border border-border flex items-center justify-center">
-                <span className="text-text-muted text-sm">
-                  Architecture diagram placeholder
+      {/* Results strip up top */}
+      <section className="px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-border border-y border-border">
+            {caseStudy.results.map((result, i) => (
+              <motion.div
+                key={result.metric}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="bg-background p-7 lg:p-9 flex flex-col gap-3"
+              >
+                <span className="font-mono text-[10.5px] tabular-nums text-text-subtle tracking-widest">
+                  R/0{i + 1}
                 </span>
+                <span className="text-[44px] lg:text-[64px] leading-none tracking-[-0.045em] font-medium text-foreground tabular-nums">
+                  {result.value}
+                </span>
+                <span className="text-[13px] text-foreground tracking-tight">
+                  {result.metric}
+                </span>
+                <span className="text-[12px] text-text-muted leading-snug">
+                  {result.description}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-3">
+            <p className="eyebrow">The problem</p>
+            <span className="font-mono text-[10.5px] text-text-subtle tabular-nums tracking-widest mt-2 block">
+              §01
+            </span>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-9 max-w-[60ch]"
+          >
+            <p className="font-display text-[24px] lg:text-[30px] leading-[1.25] tracking-[-0.015em] text-foreground">
+              {caseStudy.problem}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-3">
+            <p className="eyebrow">The solution</p>
+            <span className="font-mono text-[10.5px] text-text-subtle tabular-nums tracking-widest mt-2 block">
+              §02
+            </span>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-9 space-y-6 max-w-[62ch] text-[16.5px] lg:text-[18px] leading-[1.6] text-foreground-soft"
+          >
+            <p>{caseStudy.solution}</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Architecture */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-3">
+            <p className="eyebrow">Architecture</p>
+            <span className="font-mono text-[10.5px] text-text-subtle tabular-nums tracking-widest mt-2 block">
+              §03
+            </span>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-9"
+          >
+            <p className="text-[16.5px] lg:text-[18px] leading-[1.6] text-foreground-soft max-w-[62ch] mb-10">
+              {caseStudy.architecture}
+            </p>
+
+            {/* Tech stack inline */}
+            <div className="border-t border-border pt-8">
+              <p className="eyebrow mb-5">Stack — {caseStudy.techStack.length}</p>
+              <div className="flex flex-wrap gap-x-7 gap-y-3">
+                {caseStudy.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[16px] lg:text-[19px] tracking-[-0.01em] text-foreground"
+                  >
+                    {tech}
+                    <span className="text-text-subtle ml-7">·</span>
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-20 bg-surface/50" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-            Tech Stack
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {caseStudy.techStack.map((tech, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 rounded-full glass-card text-foreground/90 text-sm font-medium border border-border"
-              >
-                {tech}
+      {/* Next case */}
+      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto">
+          <Link
+            href={`/case-studies/${next.slug}`}
+            className="group block border-t border-border pt-12"
+          >
+            <p className="eyebrow mb-6">Next case · CS/{String(((idx + 1) % caseStudies.length) + 1).padStart(2, "0")}</p>
+            <div className="grid lg:grid-cols-12 gap-8 items-end">
+              <h3 className="lg:col-span-9 font-medium text-[36px] lg:text-[64px] leading-[0.98] tracking-[-0.03em] text-foreground group-hover:text-accent transition-colors">
+                {next.title}
+              </h3>
+              <span className="lg:col-span-3 lg:text-right text-[13.5px] text-text-muted group-hover:text-foreground transition-colors flex lg:justify-end items-center gap-2">
+                <span className="link-underline">Read on</span>
+                <svg
+                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </span>
-            ))}
-          </div>
+            </div>
+          </Link>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-20" delay={0.1}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">
-            Results
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {caseStudy.results.map((result, index) => (
-              <div
-                key={index}
-                className="glass-card rounded-2xl p-8 text-center"
-              >
-                <p className="text-text-muted text-sm font-medium mb-2">
-                  {result.metric}
-                </p>
-                <p className="text-3xl md:text-4xl font-bold gradient-text mb-3">
-                  {result.value}
-                </p>
-                <p className="text-foreground/80 text-sm">{result.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection className="py-24" delay={0.1}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Have a Similar Project?
-          </h2>
-          <p className="text-text-muted text-lg mb-8">
-            Let&apos;s discuss how we can help you achieve similar results.
-          </p>
-          <Button href="/contact" variant="primary" size="lg">
-            Get in Touch
-          </Button>
-        </div>
-      </AnimatedSection>
+      <ContactCTA />
     </>
   );
 }

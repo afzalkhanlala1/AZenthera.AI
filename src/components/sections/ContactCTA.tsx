@@ -1,83 +1,89 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/Button";
+import Link from "next/link";
 
 const reassurances = [
-  {
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    text: "Response within 24 hours",
-  },
-  {
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
-    text: "Free technical consultation",
-  },
-  {
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-    ),
-    text: "Detailed proposal included",
-  },
+  "Reply inside 24h",
+  "Free scoping call",
+  "Detailed proposal",
 ];
 
 export function ContactCTA() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 hero-grid opacity-60" />
-      <div className="absolute inset-0 radial-fade" />
+    <section className="relative px-6 lg:px-10 py-28 lg:py-36 grain overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000,transparent_75%)]" />
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-        >
-          <div className="inline-flex items-center text-xs font-medium text-accent bg-accent/8 border border-accent/15 rounded-full px-3 py-1 mb-8 tracking-wide">
-            Work With Us
-          </div>
-
-          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.15] text-foreground mb-5">
-            Let&apos;s Build{" "}
-            <span className="gradient-text">Together</span>
-          </h2>
-
-          <p className="text-[17px] text-text-muted leading-relaxed mb-10 max-w-xl mx-auto">
-            Tell us about your project. We&apos;ll scope your requirements,
-            suggest an architecture, and send you a detailed proposal — all in
-            the first call.
-          </p>
-
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
-            <Button href="/contact" variant="primary" size="lg">
-              Book a Free Consultation →
-            </Button>
-            <Button href="/case-studies" variant="secondary" size="lg">
-              View Our Work
-            </Button>
-          </div>
-
-          {/* Reassurance strip */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-text-muted">
-            {reassurances.map((item) => (
-              <span key={item.text} className="flex items-center gap-2">
-                <span className="text-accent/60">{item.icon}</span>
-                {item.text}
+      <div className="relative max-w-[1320px] mx-auto">
+        <div className="grid lg:grid-cols-12 gap-12 items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-8"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <span className="font-mono text-[11px] tabular-nums text-text-subtle tracking-widest">
+                /08
               </span>
-            ))}
-          </div>
-        </motion.div>
+              <span className="h-px w-8 bg-border-strong" aria-hidden />
+              <span className="eyebrow !text-foreground-soft">
+                Let&apos;s build
+              </span>
+            </div>
+
+            <h2 className="font-medium tracking-[-0.035em] leading-[0.95] text-foreground text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[clamp(4rem,7vw,7rem)]">
+              Tell us what
+              <br />
+              you&apos;re <span className="serif-italic text-text-muted">building</span>.
+            </h2>
+          </motion.div>
+
+          <motion.aside
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-4 lg:pb-3"
+          >
+            <p className="text-[15px] leading-[1.55] text-text-muted max-w-[36ch]">
+              We&apos;ll scope your requirements, suggest an architecture, and
+              send back a real proposal — usually inside the same week.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 h-12 pl-5 pr-1.5 rounded-full bg-foreground text-background hover:opacity-90 transition-opacity text-[14px] tracking-tight font-medium"
+              >
+                Book the call
+                <span className="w-9 h-9 grid place-items-center rounded-full bg-background text-foreground">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </Link>
+              <a
+                href="mailto:afzaljawadkhan@gmail.com"
+                className="link-underline text-[13.5px] text-foreground"
+              >
+                or email →
+              </a>
+            </div>
+
+            <ul className="mt-8 space-y-2 text-[12.5px] text-text-muted font-mono">
+              {reassurances.map((r, i) => (
+                <li key={r} className="flex items-baseline gap-3">
+                  <span className="text-text-subtle tabular-nums">
+                    0{i + 1}
+                  </span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.aside>
+        </div>
       </div>
     </section>
   );

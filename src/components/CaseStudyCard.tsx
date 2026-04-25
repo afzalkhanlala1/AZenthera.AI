@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatedSection } from "./AnimatedSection";
+import { motion } from "framer-motion";
 
 interface CaseStudyCardProps {
   title: string;
@@ -12,17 +12,6 @@ interface CaseStudyCardProps {
   index?: number;
 }
 
-const categoryAccents: Record<string, { bg: string; text: string; border: string }> = {
-  InsurTech:        { bg: "from-violet-500/12 to-accent/6",    text: "text-violet-400",  border: "border-violet-500/15" },
-  "Defense & IoT":  { bg: "from-slate-500/12 to-slate-400/6",  text: "text-slate-400",   border: "border-slate-500/15" },
-  "Sports Analytics": { bg: "from-green-500/12 to-emerald-500/6", text: "text-green-400", border: "border-green-500/15" },
-  "Retail / FMCG":  { bg: "from-amber-500/12 to-orange-500/6", text: "text-amber-400",   border: "border-amber-500/15" },
-  "Fashion Retail": { bg: "from-pink-500/12 to-rose-500/6",    text: "text-pink-400",    border: "border-pink-500/15" },
-  Enterprise:       { bg: "from-blue-500/12 to-sky-500/6",     text: "text-blue-400",    border: "border-blue-500/15" },
-};
-
-const defaultAccent = { bg: "from-accent/10 to-accent/4", text: "text-accent", border: "border-accent/15" };
-
 export function CaseStudyCard({
   title,
   category,
@@ -31,50 +20,64 @@ export function CaseStudyCard({
   results,
   index = 0,
 }: CaseStudyCardProps) {
-  const accent = categoryAccents[category] ?? defaultAccent;
   const keyResult = results?.[0];
 
   return (
-    <AnimatedSection delay={index * 0.07}>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      className="h-full"
+    >
       <Link
         href={`/case-studies/${slug}`}
-        className="group block h-full bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/25 transition-colors duration-200"
+        className="group flex flex-col h-full border border-border hover:border-foreground bg-surface transition-colors duration-200"
       >
-        {/* Thumbnail */}
-        <div className={`h-44 bg-gradient-to-br ${accent.bg} relative border-b border-border flex items-end p-4`}>
-          {/* Key metric overlay */}
+        {/* Top: meta + key result */}
+        <div className="flex items-start justify-between p-6 border-b border-border">
+          <div>
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-text-subtle">
+              {category}
+            </p>
+            <p className="mt-2 font-mono text-[10.5px] tabular-nums text-text-subtle">
+              CS/{String(index + 1).padStart(2, "0")}
+            </p>
+          </div>
           {keyResult && (
-            <div className="absolute top-4 right-4 text-right">
-              <p className={`text-2xl font-bold tracking-tight ${accent.text}`}>
+            <div className="text-right">
+              <p className="text-[34px] lg:text-[40px] leading-none tracking-[-0.04em] font-medium text-foreground tabular-nums">
                 {keyResult.value}
               </p>
-              <p className="text-[10px] text-text-muted/60 uppercase tracking-wider mt-0.5 font-medium">
+              <p className="mt-1.5 text-[10.5px] uppercase tracking-[0.1em] text-text-muted">
                 {keyResult.metric}
               </p>
             </div>
           )}
-
-          {/* Category badge */}
-          <span
-            className={`px-2.5 py-1 rounded-md bg-background/80 backdrop-blur-sm border ${accent.border} text-xs font-medium ${accent.text}`}
-          >
-            {category}
-          </span>
         </div>
 
-        <div className="p-5">
-          <h3 className="text-[15px] font-semibold text-foreground mb-2 tracking-tight group-hover:text-accent transition-colors duration-150">
+        {/* Body */}
+        <div className="flex-1 p-6 flex flex-col">
+          <h3 className="font-display text-[24px] lg:text-[28px] leading-[1.1] tracking-[-0.015em] text-foreground">
             {title}
           </h3>
-          <p className="text-text-muted text-sm line-clamp-2 leading-relaxed mb-4">
+          <p className="mt-3 text-[13.5px] leading-[1.55] text-text-muted flex-grow">
             {description}
           </p>
-          <span className="inline-flex items-center gap-1.5 text-accent text-sm font-medium group-hover:gap-2.5 transition-all duration-150">
-            View Case Study
-            <span aria-hidden>→</span>
+
+          <span className="mt-6 inline-flex items-center gap-1.5 text-[12.5px] text-foreground tracking-tight">
+            <span className="link-underline">Read case</span>
+            <svg
+              className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </span>
         </div>
       </Link>
-    </AnimatedSection>
+    </motion.div>
   );
 }

@@ -1,24 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
-type ButtonVariant = "primary" | "secondary" | "outline";
+type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent/90 shadow-sm",
+    "bg-foreground text-background border border-foreground hover:bg-transparent hover:text-foreground",
   secondary:
-    "bg-surface border border-border text-foreground hover:bg-surface-light",
-  outline:
-    "border border-accent text-accent hover:bg-accent hover:text-white",
+    "bg-transparent text-foreground border border-border-strong hover:border-foreground",
+  ghost:
+    "bg-transparent text-foreground border border-transparent hover:border-border-strong",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-3.5 py-1.5 text-sm",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-6 py-3 text-[15px]",
+  sm: "h-8 px-3.5 text-[12.5px]",
+  md: "h-10 px-5 text-[13.5px]",
+  lg: "h-12 px-6 text-[14px]",
 };
 
 interface ButtonProps {
@@ -29,6 +28,7 @@ interface ButtonProps {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  arrow?: boolean;
 }
 
 export function Button({
@@ -39,39 +39,35 @@ export function Button({
   className = "",
   onClick,
   type = "button",
+  arrow = false,
 }: ButtonProps) {
-  const baseStyles =
-    "rounded-lg font-medium inline-flex items-center justify-center transition-all duration-150 " +
-    variantStyles[variant] +
-    " " +
-    sizeStyles[size];
+  const base =
+    "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
-  const combinedClassName = `${baseStyles} ${className}`.trim();
+  const cls = `${base} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
 
-  const motionProps = {
-    whileHover: { scale: 1.015 },
-    whileTap: { scale: 0.985 },
-    transition: { duration: 0.1 },
-  };
+  const content = (
+    <>
+      <span>{children}</span>
+      {arrow && (
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      )}
+    </>
+  );
 
   if (href) {
     return (
-      <motion.div {...motionProps} className="inline-block">
-        <Link href={href} className={combinedClassName}>
-          {children}
-        </Link>
-      </motion.div>
+      <Link href={href} className={cls}>
+        {content}
+      </Link>
     );
   }
 
   return (
-    <motion.button
-      type={type}
-      className={combinedClassName}
-      onClick={onClick}
-      {...motionProps}
-    >
-      {children}
-    </motion.button>
+    <button type={type} className={cls} onClick={onClick}>
+      {content}
+    </button>
   );
 }
