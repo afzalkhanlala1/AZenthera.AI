@@ -217,6 +217,25 @@ body {
   width: max-content;
 }
 
+/* ---------------------------------------------------------------- *
+ * Voice agent visualizer
+ * ---------------------------------------------------------------- */
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.18); opacity: 0; }
+}
+@keyframes orbBob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.03); }
+}
+@keyframes eqBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.orb-ring { animation: orbPulse 2.4s ease-in-out infinite; }
+.orb-core { animation: orbBob 3s ease-in-out infinite; }
+.eq-bar { transform-origin: center bottom; animation: eqBar 0.9s ease-in-out infinite; }
+
 /* Underline-on-hover link affordance */
 .link-underline {
   position: relative;

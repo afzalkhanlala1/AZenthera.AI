@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const subjectOptions = [
   "AI Agents & Automation",
@@ -36,6 +36,26 @@ export function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Prefill from query params (e.g. a Voice Agents "Build my X" CTA links to
+  // /contact?subject=AI Agents & Automation&agent=AI Receptionist).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const qpSubject = params.get("subject");
+    const qpAgent = params.get("agent");
+    if (qpSubject && subjectOptions.includes(qpSubject)) {
+      setSubject(qpSubject);
+    } else if (qpAgent) {
+      setSubject("AI Agents & Automation");
+    }
+    if (qpAgent) {
+      setMessage(
+        `I'd like to build an "${qpAgent}" voice agent for my business. Here's some context:\n\n`
+      );
+    }
+  }, []);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -162,7 +182,8 @@ export function ContactForm() {
             name="subject"
             required
             className={`${inputClass} appearance-none cursor-pointer pr-8 [background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239a9aa3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")] bg-no-repeat bg-[right_0.25rem_center] bg-[length:1rem]`}
-            defaultValue=""
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
           >
             <option value="" disabled style={optionStyle}>
               Select…
@@ -185,6 +206,8 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="A few sentences is enough. Goals, constraints, timeline."
           className={`${inputClass} resize-none`}
         />

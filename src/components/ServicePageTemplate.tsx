@@ -8,9 +8,11 @@ import { services, type Service } from "@/lib/data";
 
 interface ServicePageTemplateProps {
   service: Service;
+  /** Optional section rendered just before the closing ContactCTA. */
+  extraSection?: React.ReactNode;
 }
 
-export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ service, extraSection }: ServicePageTemplateProps) {
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 4);
 
   return (
@@ -190,6 +192,8 @@ export function ServicePageTemplate({ service }: ServicePageTemplateProps) {
           </div>
         </div>
       </section>
+
+      {extraSection}
 
       <ContactCTA />
     </>

@@ -135,6 +135,26 @@ export function Navbar() {
                               </Link>
                             ))}
                           </div>
+                          <Link
+                            href="/services/ai-agents/voice"
+                            className="flex items-center justify-between px-5 py-3.5 border-t border-hairline bg-surface-elev/40 hover:bg-surface-elev transition-colors group/voice"
+                          >
+                            <span className="flex items-center gap-2.5">
+                              <span className="relative flex h-1.5 w-1.5">
+                                <span className="absolute inset-0 rounded-full bg-accent opacity-60 animate-ping" />
+                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                              </span>
+                              <span className="text-[13px] text-foreground tracking-tight font-medium">
+                                Voice Agents
+                              </span>
+                              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted">
+                                live demo + trial
+                              </span>
+                            </span>
+                            <span className="text-text-muted group-hover/voice:text-foreground transition-colors text-[13px]">
+                              →
+                            </span>
+                          </Link>
                         </div>
                       </motion.div>
                     )}

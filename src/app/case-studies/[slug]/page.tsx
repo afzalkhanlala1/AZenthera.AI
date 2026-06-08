@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Case Study Not Found" };
   }
   return {
-    title: `${caseStudy.title} | MetaViz AI`,
+    title: `${caseStudy.title} | AZenthera AI`,
     description: caseStudy.description,
   };
 }

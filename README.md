@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AZenthera AI — Website
 
-## Getting Started
+Marketing / portfolio site for **AZenthera AI**, a remote-first AI engineering studio. Built with Next.js (App Router) and exported as a fully static site, deployed to GitHub Pages at [azentheraai.com](https://azentheraai.com).
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4** (theme defined inline in `src/app/globals.css`, no `tailwind.config.js`)
+- **Framer Motion** for animation
+- **next/font** — Geist Sans, Geist Mono, Instrument Serif
+- Static export (`output: "export"`) → deployed via GitHub Pages
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the dev server (Turbopack) |
+| `npm run build` | Static export to `./out` |
+| `npm run start` | Serve a production build locally |
+| `npm run lint` | Run ESLint |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+- `src/lib/data.ts` — **all site content** (services, case studies, industries, team, testimonials, etc.). Most content edits happen here.
+- `src/app/` — App Router pages (home, services, case-studies, industries, about, contact).
+- `src/components/` — UI components, including `sections/` for homepage/about sections and the page templates.
+- `src/app/globals.css` — design system: color tokens (light/dark), fonts, custom utilities.
+- `public/CNAME` — custom domain for GitHub Pages.
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [`business.md`](./business.md) — all business / content information.
+- [`tech.md`](./tech.md) — all technical details and architecture.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> These two files are the source of truth for rebuilding the site. Keep them in sync when content or code changes.
 
-## Deploy on Vercel
+## Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Contact form** posts to FormSubmit.co by default. Override the endpoint with the `NEXT_PUBLIC_CONTACT_ENDPOINT` environment variable.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the static export and publishes it to GitHub Pages.

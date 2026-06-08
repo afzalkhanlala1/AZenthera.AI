@@ -2,12 +2,6 @@
 // TypeScript Interfaces & Types
 // =============================================================================
 
-export interface NavLink {
-  href: string;
-  label: string;
-  children?: { href: string; label: string }[];
-}
-
 export interface Service {
   slug: string;
   title: string;
@@ -89,32 +83,6 @@ export interface TeamMember {
   bio: string;
   highlights: string[];
 }
-
-// =============================================================================
-// Navigation Links
-// =============================================================================
-
-export const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-  {
-    href: "/services",
-    label: "Services",
-    children: [
-      { href: "/services/ai-development", label: "AI Integration & Development" },
-      { href: "/services/ai-agents", label: "AI Agents & Automation" },
-      { href: "/services/computer-vision", label: "Computer Vision & Edge AI" },
-      { href: "/services/ml-deep-learning", label: "Custom ML & Deep Learning" },
-      { href: "/services/data-engineering", label: "Data Engineering & Pipelines" },
-      { href: "/services/data-analytics", label: "Data Analytics & BI Dashboards" },
-      { href: "/services/generative-ai", label: "Generative AI Solutions" },
-      { href: "/services/web-saas", label: "Web & SaaS Development" },
-    ],
-  },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/industries", label: "Industries" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 // =============================================================================
 // Services
