@@ -24,7 +24,7 @@ const proofs = [
 
 export function WhyChooseUs() {
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10 bg-background-alt hairline-y">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10 bg-background-alt hairline-y">
       <div className="max-w-[1320px] mx-auto">
         <SectionHeading
           index="03"
@@ -43,7 +43,7 @@ export function WhyChooseUs() {
           }
         />
 
-        <div className="mt-20 grid lg:grid-cols-12 gap-y-12 gap-x-10">
+        <div className="mt-10 lg:mt-12 grid lg:grid-cols-12 gap-y-12 gap-x-10">
           {/* Principles list */}
           <div className="lg:col-span-7 border-t border-border">
             {whyChooseUs.map((item, index) => (
@@ -53,7 +53,7 @@ export function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="grid grid-cols-12 gap-4 py-8 border-b border-border"
+                className="grid grid-cols-12 gap-4 py-6 border-b border-border"
               >
                 <span className="col-span-2 font-mono text-[11px] tabular-nums text-text-subtle pt-1.5">
                   P/0{index + 1}
@@ -72,7 +72,7 @@ export function WhyChooseUs() {
 
           {/* Proof column */}
           <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-border">
-            <p className="eyebrow mb-8">Receipts</p>
+            <p className="eyebrow mb-6">Receipts</p>
             <div className="space-y-px bg-border border border-border rounded-sm overflow-hidden">
               {proofs.map((p, i) => (
                 <motion.div
@@ -81,9 +81,9 @@ export function WhyChooseUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 + i * 0.07 }}
-                  className="bg-surface px-6 py-7 flex items-baseline gap-6"
+                  className="bg-surface px-6 py-6 flex items-baseline gap-6"
                 >
-                  <span className="text-[40px] lg:text-[48px] leading-none tracking-[-0.04em] font-medium text-foreground tabular-nums w-[120px] shrink-0">
+                  <span className="text-[34px] lg:text-[40px] leading-none tracking-[-0.04em] font-medium text-foreground tabular-nums w-[104px] shrink-0">
                     {p.metric}
                   </span>
                   <div className="min-w-0 flex-1">

@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/case-studies", label: "Work" },
   { href: "/industries", label: "Industries" },
   { href: "/about", label: "Studio" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -36,63 +37,69 @@ export function Navbar() {
     return pathname.startsWith(href);
   };
 
+  const linkClass = (active: boolean) =>
+    `relative h-[60px] flex items-center px-3.5 text-[14px] tracking-tight transition-colors ${
+      active ? "text-foreground" : "text-text-muted hover:text-foreground"
+    }`;
+
+  const activeBar = (
+    <span
+      aria-hidden
+      className="absolute left-3.5 right-3.5 bottom-0 h-[2px] bg-foreground"
+    />
+  );
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-[background,border-color,backdrop-filter] duration-300 ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-hairline"
-          : "bg-transparent border-b border-transparent"
+      className={`fixed top-0 inset-x-0 z-50 border-b border-hairline backdrop-blur-xl transition-colors duration-300 ${
+        scrolled ? "bg-background/90" : "bg-background/70"
       }`}
     >
       <nav className="max-w-[1320px] mx-auto px-6 lg:px-10">
-        <div className="flex items-center justify-between h-[68px]">
+        <div className="flex items-center justify-between h-[60px]">
           {/* Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-2.5 group shrink-0"
             aria-label="AZenthera AI home"
           >
             <span className="relative w-7 h-7 grid place-items-center">
-              <span className="absolute inset-0 border border-foreground rounded-[3px]" />
-              <span className="font-display italic text-[13px] leading-none text-foreground translate-y-[1px]">
+              <span className="absolute inset-0 border border-foreground rounded-[3px] transition-colors group-hover:bg-foreground" />
+              <span className="relative font-display italic text-[13px] leading-none text-foreground transition-colors group-hover:text-background translate-y-[1px]">
                 Az
               </span>
             </span>
-            <span className="hidden sm:flex items-baseline gap-1 text-[14px] tracking-tight text-foreground">
+            <span className="hidden sm:flex items-baseline gap-1 text-[14.5px] tracking-tight text-foreground">
               <span className="font-medium">Azenthera</span>
               <span className="font-display italic text-text-muted">studio</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center self-stretch">
             {navLinks.map((link) =>
               link.hasDropdown ? (
                 <div
                   key={link.href}
-                  className="relative"
+                  className="relative self-stretch flex"
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <Link
-                    href={link.href}
-                    className={`px-3.5 py-2 text-[13.5px] tracking-tight transition-colors flex items-center gap-1.5 ${
-                      isActive(link.href)
-                        ? "text-foreground"
-                        : "text-text-muted hover:text-foreground"
-                    }`}
-                  >
-                    {link.label}
-                    <svg
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        servicesOpen ? "rotate-180" : ""
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                  <Link href={link.href} className={linkClass(isActive(link.href))}>
+                    <span className="flex items-center gap-1.5">
+                      {link.label}
+                      <svg
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          servicesOpen ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                    {isActive(link.href) && activeBar}
                   </Link>
 
                   <AnimatePresence>
@@ -102,16 +109,16 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -4 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 pt-3"
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
                       >
-                        <div className="w-[640px] bg-background border border-border rounded-md shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden">
-                          <div className="px-5 pt-4 pb-2 flex items-center justify-between border-b border-hairline">
+                        <div className="w-[600px] bg-background border border-border rounded-md shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden">
+                          <div className="px-5 py-3 flex items-center justify-between border-b border-hairline">
                             <span className="eyebrow">Capabilities · 08</span>
                             <Link
                               href="/services"
                               className="text-[11.5px] text-text-muted hover:text-foreground transition-colors"
                             >
-                              Index ↗
+                              View all ↗
                             </Link>
                           </div>
                           <div className="grid grid-cols-2 gap-px bg-hairline">
@@ -119,9 +126,9 @@ export function Navbar() {
                               <Link
                                 key={service.slug}
                                 href={`/services/${service.slug}`}
-                                className="bg-background px-5 py-3.5 hover:bg-surface-elev transition-colors group/item flex items-baseline gap-3"
+                                className="bg-background px-5 py-3 hover:bg-surface-elev transition-colors group/item flex items-baseline gap-3"
                               >
-                                <span className="font-mono text-[10.5px] text-text-subtle tabular-nums w-6 shrink-0">
+                                <span className="font-mono text-[10.5px] text-text-subtle tabular-nums w-5 shrink-0">
                                   {String(i + 1).padStart(2, "0")}
                                 </span>
                                 <div className="min-w-0">
@@ -164,20 +171,17 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-2 text-[13.5px] tracking-tight transition-colors ${
-                    isActive(link.href)
-                      ? "text-foreground"
-                      : "text-text-muted hover:text-foreground"
-                  }`}
+                  className={linkClass(isActive(link.href))}
                 >
                   {link.label}
+                  {isActive(link.href) && activeBar}
                 </Link>
               )
             )}
           </div>
 
           {/* Right rail */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <ThemeToggle />
             <Link
               href="/contact"
@@ -228,16 +232,16 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22 }}
-            className="lg:hidden bg-background border-t border-hairline overflow-hidden"
+            className="lg:hidden bg-background border-t border-hairline overflow-hidden max-h-[calc(100dvh-60px)] overflow-y-auto"
           >
-            <div className="max-w-[1320px] mx-auto px-6 py-6">
-              <div className="space-y-1">
+            <div className="max-w-[1320px] mx-auto px-6 py-5">
+              <div className="space-y-0.5">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={`flex items-center justify-between py-3 border-b border-hairline text-[15px] tracking-tight ${
-                      isActive(link.href) ? "text-foreground" : "text-foreground-soft"
+                      isActive(link.href) ? "text-foreground font-medium" : "text-foreground-soft"
                     }`}
                   >
                     {link.label}
@@ -246,14 +250,14 @@ export function Navbar() {
                 ))}
               </div>
 
-              <div className="mt-6">
+              <div className="mt-5">
                 <p className="eyebrow mb-3">Capabilities</p>
                 <div className="grid grid-cols-2 gap-px bg-hairline border border-hairline">
                   {services.map((service, i) => (
                     <Link
                       key={service.slug}
                       href={`/services/${service.slug}`}
-                      className="bg-background px-3 py-3 flex items-baseline gap-2"
+                      className="bg-background px-3 py-2.5 flex items-baseline gap-2"
                     >
                       <span className="font-mono text-[10px] text-text-subtle tabular-nums">
                         {String(i + 1).padStart(2, "0")}
@@ -268,7 +272,7 @@ export function Navbar() {
 
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center justify-between w-full h-12 px-5 rounded-full border border-foreground bg-foreground text-background"
+                className="mt-5 mb-1 inline-flex items-center justify-between w-full h-12 px-5 rounded-full border border-foreground bg-foreground text-background"
               >
                 <span className="text-[14px] tracking-tight font-medium">Start a project</span>
                 <span>→</span>

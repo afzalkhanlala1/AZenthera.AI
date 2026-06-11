@@ -23,7 +23,7 @@ export function PageHero({
   meta,
 }: PageHeroProps) {
   return (
-    <section className="relative pt-32 md:pt-36 lg:pt-40 pb-20 px-6 lg:px-10 grain">
+    <section className="relative pt-[92px] md:pt-[104px] pb-12 lg:pb-14 px-6 lg:px-10 grain">
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000,transparent_75%)]" />
       <div className="absolute inset-x-0 top-0 h-[300px] accent-tint pointer-events-none" />
 
@@ -33,7 +33,7 @@ export function PageHero({
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center justify-between pb-10 hairline-b"
+          className="flex items-center justify-between pb-5 hairline-b"
         >
           <div className="flex items-center gap-3">
             {marker && (
@@ -50,12 +50,12 @@ export function PageHero({
         </motion.div>
 
         {/* Title block */}
-        <div className="pt-12 lg:pt-16 grid lg:grid-cols-12 gap-y-10 gap-x-12">
+        <div className="pt-9 lg:pt-12 grid lg:grid-cols-12 gap-y-8 gap-x-12">
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.05 }}
-            className="lg:col-span-9 font-medium tracking-[-0.03em] leading-[0.95] text-foreground text-[12vw] sm:text-[10vw] md:text-[8.5vw] lg:text-[clamp(4rem,7.4vw,7.5rem)]"
+            className="lg:col-span-8 font-medium tracking-[-0.03em] leading-[1] text-foreground text-[10vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[clamp(2.75rem,4.6vw,4.5rem)]"
           >
             {title}
           </motion.h1>
@@ -64,7 +64,7 @@ export function PageHero({
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="lg:col-span-3 lg:pt-2 lg:border-l lg:border-hairline lg:pl-6"
+            className="lg:col-span-4 lg:pt-2 lg:border-l lg:border-hairline lg:pl-10"
           >
             {description && (
               <p className="text-[15px] leading-[1.55] text-text-muted max-w-[36ch]">

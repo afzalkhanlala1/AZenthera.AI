@@ -9,7 +9,7 @@ export function TestimonialsSection() {
   const rest = testimonials.slice(1, 5);
 
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10">
       <div className="max-w-[1320px] mx-auto">
         <SectionHeading
           index="06"
@@ -23,7 +23,7 @@ export function TestimonialsSection() {
           description="Five engagements, one pattern: production-grade systems still running long after the last sprint."
         />
 
-        <div className="mt-20 grid lg:grid-cols-12 gap-10">
+        <div className="mt-10 lg:mt-12 grid lg:grid-cols-12 gap-10">
           {/* Featured */}
           <motion.figure
             initial={{ opacity: 0, y: 12 }}
@@ -32,13 +32,13 @@ export function TestimonialsSection() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7 flex flex-col"
           >
-            <span className="font-display italic text-[120px] leading-[0.6] text-accent/40 select-none">
+            <span className="font-display italic text-[88px] leading-[0.6] text-accent/40 select-none">
               &ldquo;
             </span>
-            <blockquote className="mt-2 font-display text-[28px] lg:text-[40px] leading-[1.1] tracking-[-0.02em] text-foreground">
+            <blockquote className="mt-2 font-display text-[24px] lg:text-[32px] leading-[1.18] tracking-[-0.02em] text-foreground">
               {featured.quote}
             </blockquote>
-            <figcaption className="mt-10 pt-6 border-t border-border flex items-center justify-between gap-6">
+            <figcaption className="mt-8 pt-5 border-t border-border flex items-center justify-between gap-6">
               <div>
                 <p className="text-[14px] tracking-tight text-foreground">
                   {featured.name}
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-surface p-6"
+                className="bg-surface p-5"
               >
                 <blockquote className="text-[14.5px] leading-[1.55] text-foreground-soft">
                   {t.quote.length > 140

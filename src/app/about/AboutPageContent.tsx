@@ -52,8 +52,8 @@ export function AboutPageContent() {
       />
 
       {/* Long-form story */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
-        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
+      <section className="py-12 lg:py-16 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-3">
             <p className="eyebrow">Long version</p>
           </div>
@@ -63,7 +63,7 @@ export function AboutPageContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-9 space-y-7 text-[17px] lg:text-[18.5px] leading-[1.6] text-foreground-soft max-w-[60ch]"
+            className="lg:col-span-9 space-y-6 text-[16px] lg:text-[17px] leading-[1.65] text-foreground-soft max-w-[62ch]"
           >
             <p>
               Azenthera is run by engineers who got tired of glossy demos that
@@ -91,12 +91,12 @@ export function AboutPageContent() {
       </section>
 
       {/* Manifesto / values */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto">
-          <div className="grid lg:grid-cols-12 gap-10 mb-14">
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-5">Manifesto</p>
-              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+          <div className="grid lg:grid-cols-12 gap-10 mb-10">
+            <div className="lg:col-span-6">
+              <p className="eyebrow mb-4">Manifesto</p>
+              <h2 className="font-medium text-[30px] lg:text-[38px] leading-[1.06] tracking-[-0.022em] text-foreground">
                 Four things we&apos;ll <em className="serif-italic text-text-muted">never</em> compromise on.
               </h2>
             </div>
@@ -110,15 +110,15 @@ export function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-background p-8 lg:p-10"
+                className="bg-background p-6 lg:p-8"
               >
-                <div className="flex items-baseline gap-4 mb-5">
+                <div className="flex items-baseline gap-4 mb-4">
                   <span className="font-mono text-[11px] tabular-nums text-text-subtle">
                     /0{i + 1}
                   </span>
                   <span className="h-px flex-1 bg-border" />
                 </div>
-                <h3 className="text-[22px] lg:text-[26px] tracking-[-0.02em] text-foreground leading-tight">
+                <h3 className="text-[19px] lg:text-[22px] tracking-[-0.02em] text-foreground leading-tight">
                   {v.title}
                 </h3>
                 <p className="mt-3 text-[14.5px] leading-[1.6] text-text-muted">

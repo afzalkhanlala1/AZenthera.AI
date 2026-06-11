@@ -61,8 +61,8 @@ export function ContactPageContent() {
         ]}
       />
 
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
-        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
+      <section className="py-12 lg:py-16 px-6 lg:px-10">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-10">
           {/* Contact form */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -71,7 +71,7 @@ export function ContactPageContent() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7"
           >
-            <div className="border border-border bg-surface p-7 lg:p-10">
+            <div className="border border-border bg-surface p-6 lg:p-8">
               <ContactForm />
             </div>
           </motion.div>
@@ -124,11 +124,11 @@ export function ContactPageContent() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
-        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
+        <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
-            <p className="eyebrow mb-5">Frequently asked</p>
-            <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+            <p className="eyebrow mb-4">Frequently asked</p>
+            <h2 className="font-medium text-[30px] lg:text-[38px] leading-[1.06] tracking-[-0.022em] text-foreground">
               Questions, <em className="serif-italic text-text-muted">answered</em>.
             </h2>
           </div>

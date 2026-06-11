@@ -7,7 +7,7 @@ import { services } from "@/lib/data";
 
 export function ServicesGrid() {
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10">
       <div className="max-w-[1320px] mx-auto">
         <SectionHeading
           index="02"
@@ -28,7 +28,7 @@ export function ServicesGrid() {
           }
         />
 
-        <div className="mt-20 border-t border-border">
+        <div className="mt-10 lg:mt-12 border-t border-border">
           {services.map((service, index) => (
             <motion.div
               key={service.slug}
@@ -39,12 +39,12 @@ export function ServicesGrid() {
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group grid grid-cols-12 gap-4 lg:gap-8 items-baseline py-7 lg:py-9 border-b border-border hover:bg-surface-elev/40 -mx-2 px-2 lg:-mx-4 lg:px-4 transition-colors"
+                className="group grid grid-cols-12 gap-4 lg:gap-8 items-baseline py-5 lg:py-6 border-b border-border hover:bg-surface-elev/40 -mx-2 px-2 lg:-mx-4 lg:px-4 transition-colors"
               >
                 <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle pt-1">
                   /{String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="col-span-10 lg:col-span-4 text-[22px] lg:text-[28px] tracking-[-0.025em] leading-[1.1] text-foreground">
+                <h3 className="col-span-10 lg:col-span-4 text-[20px] lg:text-[24px] tracking-[-0.025em] leading-[1.1] text-foreground">
                   {service.shortTitle}
                 </h3>
                 <p className="col-span-12 lg:col-span-5 text-[14.5px] leading-[1.55] text-text-muted">

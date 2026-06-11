@@ -11,7 +11,7 @@ const reassurances = [
 
 export function ContactCTA() {
   return (
-    <section className="relative px-6 lg:px-10 py-28 lg:py-36 grain overflow-hidden">
+    <section className="relative px-6 lg:px-10 py-20 lg:py-28 grain overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000,transparent_75%)]" />
 
       <div className="relative max-w-[1320px] mx-auto">
@@ -23,7 +23,7 @@ export function ContactCTA() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-8"
           >
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-6">
               <span className="font-mono text-[11px] tabular-nums text-text-subtle tracking-widest">
                 /08
               </span>
@@ -33,7 +33,7 @@ export function ContactCTA() {
               </span>
             </div>
 
-            <h2 className="font-medium tracking-[-0.035em] leading-[0.95] text-foreground text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[clamp(4rem,7vw,7rem)]">
+            <h2 className="font-medium tracking-[-0.035em] leading-[0.98] text-foreground text-[10vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[clamp(3rem,4.8vw,4.75rem)]">
               Tell us what
               <br />
               you&apos;re <span className="serif-italic text-text-muted">building</span>.

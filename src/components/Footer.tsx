@@ -36,16 +36,16 @@ export function Footer() {
 
   return (
     <footer className="relative bg-background-alt hairline-t">
-      <div className="max-w-[1320px] mx-auto px-6 lg:px-10 pt-20 pb-10">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10 pt-14 pb-8">
         {/* Display wordmark */}
-        <div className="hairline-b pb-12 mb-12">
-          <p className="eyebrow mb-6">/ Footer · ↳ index</p>
-          <p className="font-display tracking-[-0.03em] leading-[0.85] text-foreground text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[clamp(7rem,14vw,12rem)]">
+        <div className="hairline-b pb-8 mb-10">
+          <p className="eyebrow mb-4">/ Footer · ↳ index</p>
+          <p className="font-display tracking-[-0.03em] leading-[0.9] text-foreground text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[clamp(4rem,7.5vw,6.5rem)]">
             Azenthera<span className="serif-italic text-text-muted">.</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-10 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
             <Link
@@ -133,7 +133,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-border flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-12 pt-5 border-t border-border flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-mono text-[11px] text-text-subtle tracking-wider tabular-nums">
             © {currentYear} · Azenthera AI · v2.{currentYear % 100}
           </p>

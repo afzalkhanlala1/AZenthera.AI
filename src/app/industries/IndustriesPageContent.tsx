@@ -43,7 +43,7 @@ export function IndustriesPageContent() {
       />
 
       {/* Industry index */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-12 lg:py-16 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto border-t border-border">
           {industries.map((industry, index) => (
             <motion.div
@@ -52,7 +52,7 @@ export function IndustriesPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.4, delay: index * 0.04 }}
-              className="grid grid-cols-12 gap-4 py-7 border-b border-border items-baseline"
+              className="grid grid-cols-12 gap-4 py-5 border-b border-border items-baseline"
             >
               <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle">
                 /{String(index + 1).padStart(2, "0")}
@@ -69,12 +69,12 @@ export function IndustriesPageContent() {
       </section>
 
       {/* Approach */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-4">
-              <p className="eyebrow mb-5">Why specialised?</p>
-              <h2 className="font-display text-[40px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-foreground">
+              <p className="eyebrow mb-4">Why specialised?</p>
+              <h2 className="font-display text-[30px] lg:text-[38px] leading-[1.1] tracking-[-0.02em] text-foreground">
                 Generic AI <em className="serif-italic text-text-muted">falls short</em>.
               </h2>
             </div>

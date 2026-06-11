@@ -29,18 +29,18 @@ export default function ServicesIndexPage() {
         ]}
       />
 
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-12 lg:py-16 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto border-t border-border">
           {services.map((service, index) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group grid grid-cols-12 gap-4 lg:gap-8 items-baseline py-8 lg:py-10 border-b border-border hover:bg-surface-elev/40 -mx-2 px-2 lg:-mx-4 lg:px-4 transition-colors"
+              className="group grid grid-cols-12 gap-4 lg:gap-8 items-baseline py-6 lg:py-7 border-b border-border hover:bg-surface-elev/40 -mx-2 px-2 lg:-mx-4 lg:px-4 transition-colors"
             >
               <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle pt-2">
                 /{String(index + 1).padStart(2, "0")}
               </span>
-              <h2 className="col-span-10 lg:col-span-4 text-[24px] lg:text-[32px] tracking-[-0.025em] leading-[1.05] text-foreground">
+              <h2 className="col-span-10 lg:col-span-4 text-[21px] lg:text-[26px] tracking-[-0.025em] leading-[1.1] text-foreground">
                 {service.shortTitle}
               </h2>
               <p className="col-span-12 lg:col-span-5 text-[14.5px] leading-[1.55] text-text-muted">

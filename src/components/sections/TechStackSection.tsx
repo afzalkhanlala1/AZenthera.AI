@@ -17,7 +17,7 @@ const layout = [
 
 export function TechStackSection() {
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10 bg-background-alt hairline-y">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10 bg-background-alt hairline-y">
       <div className="max-w-[1320px] mx-auto">
         <SectionHeading
           index="05"
@@ -31,7 +31,7 @@ export function TechStackSection() {
           description="Boring where it matters, modern where it pays off. We pick infrastructure that we can support a year from now — not whatever shipped last week."
         />
 
-        <div className="mt-20 grid lg:grid-cols-12 gap-px bg-border border border-border">
+        <div className="mt-10 lg:mt-12 grid lg:grid-cols-12 gap-px bg-border border border-border">
           {techStack.map((category, i) => (
             <motion.div
               key={category.category}
@@ -39,9 +39,9 @@ export function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className={`bg-background p-7 lg:p-9 ${layout[i]?.col ?? "lg:col-span-6"}`}
+              className={`bg-background p-6 lg:p-7 ${layout[i]?.col ?? "lg:col-span-6"}`}
             >
-              <div className="flex items-baseline justify-between mb-7">
+              <div className="flex items-baseline justify-between mb-5">
                 <p className="eyebrow">{category.category}</p>
                 <span className="font-mono text-[10.5px] text-text-subtle tabular-nums">
                   {String(i + 1).padStart(2, "0")} / {String(techStack.length).padStart(2, "0")}
@@ -51,7 +51,7 @@ export function TechStackSection() {
                 {category.technologies.map((tech, ti) => (
                   <li
                     key={tech}
-                    className="text-[16px] lg:text-[19px] tracking-[-0.01em] text-foreground-soft hover:text-foreground transition-colors flex items-baseline gap-6"
+                    className="text-[15px] lg:text-[17px] tracking-[-0.01em] text-foreground-soft hover:text-foreground transition-colors flex items-baseline gap-6"
                   >
                     {tech}
                     {ti < category.technologies.length - 1 && (

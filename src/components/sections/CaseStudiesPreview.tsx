@@ -9,9 +9,9 @@ export function CaseStudiesPreview() {
   const previewStudies = caseStudies.slice(0, 3);
 
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10 bg-background-alt hairline-y">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10 bg-background-alt hairline-y">
       <div className="max-w-[1320px] mx-auto">
-        <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
+        <div className="grid lg:grid-cols-12 gap-8 items-end mb-10">
           <div className="lg:col-span-8">
             <SectionHeading
               index="07"

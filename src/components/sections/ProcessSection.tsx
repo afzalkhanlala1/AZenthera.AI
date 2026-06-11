@@ -8,7 +8,7 @@ const week = ["wk 0", "wk 1", "wk 2-N", "wk N+", "ongoing"];
 
 export function ProcessSection() {
   return (
-    <section className="relative py-28 lg:py-36 px-6 lg:px-10">
+    <section className="relative py-16 lg:py-24 px-6 lg:px-10">
       <div className="max-w-[1320px] mx-auto">
         <SectionHeading
           index="04"
@@ -23,11 +23,11 @@ export function ProcessSection() {
           description="No black-box quotes, no surprise pivots. Every project moves through the same five phases — sized to your scope."
         />
 
-        <div className="mt-20 relative">
+        <div className="mt-10 lg:mt-14 relative">
           {/* Horizontal connector for desktop */}
           <div
             aria-hidden
-            className="hidden lg:block absolute top-[68px] left-0 right-0 h-px bg-border"
+            className="hidden lg:block absolute top-[18px] left-0 right-0 h-px bg-border"
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-border border border-border lg:bg-transparent lg:border-none">

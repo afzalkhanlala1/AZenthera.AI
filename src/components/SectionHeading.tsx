@@ -40,14 +40,14 @@ export function SectionHeading({
       </div>
 
       <div
-        className={`mt-6 ${
+        className={`mt-5 ${
           split
-            ? "grid lg:grid-cols-12 gap-8 lg:gap-16 items-end"
+            ? "grid lg:grid-cols-12 gap-6 lg:gap-16 items-end"
             : ""
         }`}
       >
         <h2
-          className={`text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.02] tracking-[-0.025em] font-medium text-foreground ${
+          className={`text-[clamp(1.85rem,3.2vw,2.75rem)] leading-[1.08] tracking-[-0.022em] font-medium text-foreground ${
             split ? "lg:col-span-7" : "max-w-[18ch]"
           } ${align === "center" ? "mx-auto" : ""}`}
         >
@@ -55,10 +55,10 @@ export function SectionHeading({
         </h2>
         {description && (
           <p
-            className={`text-[16px] md:text-[17px] leading-[1.55] text-text-muted ${
+            className={`text-[15px] md:text-[16px] leading-[1.6] text-text-muted ${
               split
-                ? "lg:col-span-5 lg:pb-2 max-w-[44ch]"
-                : "mt-5 max-w-[52ch]"
+                ? "lg:col-span-5 lg:pb-1 max-w-[44ch]"
+                : "mt-4 max-w-[52ch]"
             } ${align === "center" ? "mx-auto" : ""}`}
           >
             {description}

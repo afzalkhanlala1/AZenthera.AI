@@ -43,7 +43,7 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-14 lg:py-20 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-3">
             <p className="eyebrow">Overview</p>
@@ -55,7 +55,7 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
             transition={{ duration: 0.5 }}
             className="lg:col-span-9"
           >
-            <p className="font-display text-[26px] lg:text-[34px] leading-[1.2] tracking-[-0.015em] text-foreground max-w-[60ch]">
+            <p className="font-display text-[22px] lg:text-[27px] leading-[1.3] tracking-[-0.015em] text-foreground max-w-[58ch]">
               {service.overview}
             </p>
           </motion.div>
@@ -63,12 +63,12 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
       </section>
 
       {/* Capabilities */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto">
-          <div className="grid lg:grid-cols-12 gap-10 mb-12">
+          <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
-              <p className="eyebrow mb-5">Capabilities</p>
-              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+              <p className="eyebrow mb-4">Capabilities</p>
+              <h2 className="font-medium text-[30px] lg:text-[38px] leading-[1.06] tracking-[-0.022em] text-foreground">
                 What we <em className="serif-italic text-text-muted">deliver</em>.
               </h2>
             </div>
@@ -88,12 +88,12 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="grid grid-cols-12 gap-4 py-6 border-b border-border items-baseline"
+                className="grid grid-cols-12 gap-4 py-5 border-b border-border items-baseline"
               >
                 <span className="col-span-2 lg:col-span-1 font-mono text-[11px] tabular-nums text-text-subtle">
                   /{String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="col-span-10 lg:col-span-11 text-[16px] lg:text-[18px] tracking-[-0.015em] text-foreground">
+                <span className="col-span-10 lg:col-span-11 text-[15.5px] lg:text-[17px] tracking-[-0.015em] text-foreground">
                   {feature}
                 </span>
               </motion.li>
@@ -103,12 +103,12 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
       </section>
 
       {/* Benefits */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-14 lg:py-20 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto">
-          <div className="grid lg:grid-cols-12 gap-10 mb-14">
+          <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
-              <p className="eyebrow mb-5">Outcomes</p>
-              <h2 className="font-medium text-[40px] lg:text-[56px] leading-[1.02] tracking-[-0.025em] text-foreground">
+              <p className="eyebrow mb-4">Outcomes</p>
+              <h2 className="font-medium text-[30px] lg:text-[38px] leading-[1.06] tracking-[-0.022em] text-foreground">
                 What you <em className="serif-italic text-text-muted">get</em>.
               </h2>
             </div>
@@ -122,12 +122,12 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-surface p-7 lg:p-8"
+                className="bg-surface p-6 lg:p-7"
               >
                 <span className="font-mono text-[11px] tabular-nums text-text-subtle">
                   B/0{i + 1}
                 </span>
-                <p className="mt-5 text-[17px] lg:text-[19px] tracking-[-0.015em] text-foreground leading-snug">
+                <p className="mt-4 text-[16px] lg:text-[17px] tracking-[-0.015em] text-foreground leading-snug">
                   {benefit}
                 </p>
               </motion.div>
@@ -137,19 +137,19 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
       </section>
 
       {/* Stack */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
             <p className="eyebrow mb-5">The stack</p>
-            <h2 className="font-display text-[40px] lg:text-[52px] leading-[1.05] tracking-[-0.02em] text-foreground">
+            <h2 className="font-display text-[30px] lg:text-[38px] leading-[1.1] tracking-[-0.02em] text-foreground">
               Tools we&apos;ll <em className="serif-italic text-text-muted">use</em>.
             </h2>
           </div>
-          <div className="lg:col-span-8 flex flex-wrap gap-x-8 gap-y-3 lg:pt-6">
+          <div className="lg:col-span-8 flex flex-wrap gap-x-8 gap-y-3 lg:pt-4">
             {service.technologies.map((tech) => (
               <span
                 key={tech}
-                className="text-[18px] lg:text-[22px] tracking-[-0.01em] text-foreground-soft"
+                className="text-[16px] lg:text-[19px] tracking-[-0.01em] text-foreground-soft"
               >
                 {tech}
                 <span className="text-text-subtle ml-8">·</span>
@@ -160,7 +160,7 @@ export function ServicePageTemplate({ service, extraSection }: ServicePageTempla
       </section>
 
       {/* Other services */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-14 lg:py-20 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto">
           <div className="flex items-end justify-between mb-12">
             <p className="eyebrow">Adjacent capabilities</p>

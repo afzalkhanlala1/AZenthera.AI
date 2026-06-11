@@ -39,12 +39,12 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="bg-background p-7 lg:p-9 flex flex-col gap-3"
+                className="bg-background p-6 lg:p-7 flex flex-col gap-2.5"
               >
                 <span className="font-mono text-[10.5px] tabular-nums text-text-subtle tracking-widest">
                   R/0{i + 1}
                 </span>
-                <span className="text-[44px] lg:text-[64px] leading-none tracking-[-0.045em] font-medium text-foreground tabular-nums">
+                <span className="text-[36px] lg:text-[46px] leading-none tracking-[-0.045em] font-medium text-foreground tabular-nums">
                   {result.value}
                 </span>
                 <span className="text-[13px] text-foreground tracking-tight">
@@ -60,7 +60,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
       </section>
 
       {/* Problem */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-14 lg:py-20 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-3">
             <p className="eyebrow">The problem</p>
@@ -75,7 +75,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
             transition={{ duration: 0.5 }}
             className="lg:col-span-9 max-w-[60ch]"
           >
-            <p className="font-display text-[24px] lg:text-[30px] leading-[1.25] tracking-[-0.015em] text-foreground">
+            <p className="font-display text-[21px] lg:text-[26px] leading-[1.3] tracking-[-0.015em] text-foreground">
               {caseStudy.problem}
             </p>
           </motion.div>
@@ -83,7 +83,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
       </section>
 
       {/* Solution */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-3">
             <p className="eyebrow">The solution</p>
@@ -96,7 +96,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-9 space-y-6 max-w-[62ch] text-[16.5px] lg:text-[18px] leading-[1.6] text-foreground-soft"
+            className="lg:col-span-9 space-y-6 max-w-[62ch] text-[15.5px] lg:text-[16.5px] leading-[1.65] text-foreground-soft"
           >
             <p>{caseStudy.solution}</p>
           </motion.div>
@@ -104,7 +104,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
       </section>
 
       {/* Architecture */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10">
+      <section className="py-14 lg:py-20 px-6 lg:px-10">
         <div className="max-w-[1320px] mx-auto grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-3">
             <p className="eyebrow">Architecture</p>
@@ -119,7 +119,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
             transition={{ duration: 0.5 }}
             className="lg:col-span-9"
           >
-            <p className="text-[16.5px] lg:text-[18px] leading-[1.6] text-foreground-soft max-w-[62ch] mb-10">
+            <p className="text-[15.5px] lg:text-[16.5px] leading-[1.65] text-foreground-soft max-w-[62ch] mb-8">
               {caseStudy.architecture}
             </p>
 
@@ -130,7 +130,7 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
                 {caseStudy.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[16px] lg:text-[19px] tracking-[-0.01em] text-foreground"
+                    className="text-[15px] lg:text-[17px] tracking-[-0.01em] text-foreground"
                   >
                     {tech}
                     <span className="text-text-subtle ml-7">·</span>
@@ -143,15 +143,15 @@ export function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps)
       </section>
 
       {/* Next case */}
-      <section className="py-20 lg:py-28 px-6 lg:px-10 bg-background-alt hairline-y">
+      <section className="py-14 lg:py-20 px-6 lg:px-10 bg-background-alt hairline-y">
         <div className="max-w-[1320px] mx-auto">
           <Link
             href={`/case-studies/${next.slug}`}
-            className="group block border-t border-border pt-12"
+            className="group block border-t border-border pt-10"
           >
-            <p className="eyebrow mb-6">Next case · CS/{String(((idx + 1) % caseStudies.length) + 1).padStart(2, "0")}</p>
+            <p className="eyebrow mb-5">Next case · CS/{String(((idx + 1) % caseStudies.length) + 1).padStart(2, "0")}</p>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
-              <h3 className="lg:col-span-9 font-medium text-[36px] lg:text-[64px] leading-[0.98] tracking-[-0.03em] text-foreground group-hover:text-accent transition-colors">
+              <h3 className="lg:col-span-9 font-medium text-[30px] lg:text-[44px] leading-[1.02] tracking-[-0.03em] text-foreground group-hover:text-accent transition-colors">
                 {next.title}
               </h3>
               <span className="lg:col-span-3 lg:text-right text-[13.5px] text-text-muted group-hover:text-foreground transition-colors flex lg:justify-end items-center gap-2">
